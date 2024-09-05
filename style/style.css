@@ -10,6 +10,7 @@ body{
     padding: 10px 0px;
 
 }
+
 #top .offer{
   color: #fff;
 
@@ -104,7 +105,6 @@ body{
 }
 #search .navbar-form{
     float:right;
-    /* margin-left: 80%; */
 }
 #search{
     clear: both;
@@ -118,8 +118,8 @@ body{
     width: 100%;
 }
 #images{
-    width: 100%;
-    height: 400px;
+    width: 110%;
+    height: 500px;
 }
 /* Slider CSS */
 #slider{
@@ -360,33 +360,33 @@ body{
 /* Footer Style */
 #footer{
     background: #e0e0e0;
-    padding-left: 20px 0;
-
+    padding: 20px 0;
 }
 #footer ul{
-    padding-left: 0;
+    padding-left: 0px;
     list-style: none;
 }
 #footer ul a{
-  color: #999999;
-  padding: 20px 0;
+    color: #999999;
+    padding: 20px 0px;
+
 }
 #footer .social{
-    text-align: left;
+  text-align: left;
 }
 #footer .social a{
-    margin: 0 10px 0 0;
-    color: #fff;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    line-height: 30px;
-    font-size: 15px;
-    text-align: center;
-    transform: all 0.25 ease-out;
-    vertical-align: bottom;
-    background-color: #555555;
+   margin: 0 10px 0 0;
+   color: #fff;
+   display:inline-block;
+   width: 30px;
+   height: 30px;
+   border-radius: 15px;
+   line-height: 30px;
+   font-size: 15px;
+   text-align: center;
+   transform: all 0.2s ease-out;
+   vertical-align: bottom;
+   background-color: #555555;
 }
 #copyright{
      background-color: black;
@@ -396,4 +396,4 @@ body{
 }
 #copyright p{
     margin: 0;
-}
+} 

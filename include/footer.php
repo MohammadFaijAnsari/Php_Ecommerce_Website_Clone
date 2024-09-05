@@ -4,97 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
 </head>
 <body>
     <div id='footer'>
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6"  style="margin-top:20px; background-color:white;">
-                   <h4>Pages</h4>
-                   <ul>
-                     <li><a href="cart.php">Shopping Card</a></li>
-                     <li><a href="contact.php">Contact</a></li>
-                     <li><a href="shop.php">Shop</a></li>
-                     <li><a href="checkout.php">My Account</a></li>
-                   </ul>
-                   <hr>
-                   <h4>Users Section</h4>
-                   <ul>
+      <!-- Footer Start -->
+        <div class="container">
+           <div class="row">
+             <!--1 col-md-3 start -->
+              <div class="col-md-3 col-sm-6">
+                 <h4>Pages</h4>
+                 <ul>
+                    <li><a href="card.php">Shopping Cart</a></li>
+                    <li><a href="contactus.php">Contact</a></li>
+                    <li><a href="shop.php">Shop</a></li>
+                    <li><a href="chechout.php">My Account</a></li>
+                 </ul>
+                 <hr>
+                 <h4>Users Section</h4>
+                 <ul>
                     <li><a href="checkout.php">Login</a></li>
-                    <li><a href="customer_registration.php">Registor</a></li>
+                    <li><a href="customer_registration.php">Register</a></li>
+                    <li></li>
+                 </ul>
+                 <hr class="hidden-md hidden-lg hidden-sm">
+              </div>
+              <!--1 col-md-3 end -->
+               <!--2 col-md-3 Start -->
+               <div class="col-md-3 col-sm-6">
+                  <h4>Top Categories</h4>
+                   <ul>
+                     <li><a href="">Jacket</a></li>
+                     <li><a href="">Accessories</a></li>
+                     <li><a href="">Shoes</a></li>
+                     <li><a href="">Coats</a></li>
+                     <li><a href="">T-Shirt</a></li>
                    </ul>
-                   <hr class="hidden-md hodden-lg hidden-sm">
-                </div>
-                <div class="col-md-3 col-sm-6" style="margin-top:20px; background-color:white;">
-                    <h4>Top Product Categories</h4>
-                    <ul>
-                        <li><a href="#">Jacket</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Coats</a></li>
-                        <li><a href="#">T-Shirt</a></li>
-                    </ul>
-                    <hr class="hidden-sm hidden-lg">
-                </div>
-                <div class="col-md-3 col-sm-6" style="margin-top:20px; background-color:white;">
-                  <h4>Where to Find Us</h4>
-                  <p>
-                    <strong>Mohammad Faij Ansari</strong>
-                    <br>Address:Mughara Badshapur Jaunpur   
-                    <br>Email:faija639@gmail.com
-                    <br>Phone_No:+91 8090835664
+                   <hr class="hidden-md hidden-lg">
+
+               </div>
+               <!--2 col-md-3 end -->
+               <!--3 col-md-3 start  -->
+               <div class="col-md-3 col-sm-6">
+                   <h4>Where to find us</h4>
+                    <p>
+                        <strong>E-Commerce Webite</strong>
+                        <br>IICS
+                        <br>Prayagraj
+                        <br>Uttar Pradesh
+                        <br>iics@gmail.com
+                        <br>+91 8090835664
+                    </p>   
+                    <a href="contact.php">Go To Contact Page</a>
+                    <hr class="col-md-3 hidden-lg">
+               </div>
+               <!--3 col-md-3 end  -->
+               <!--4 col-md-3 start -->
+                 <h4>Get the News</h4>
+                  <p class="text-muted">
+                     Subscribe the channel the of IICS College
                   </p>
-                  <a href="contact.php">Go to contact us page</a>
-                  <hr class="hidden-md hidden-lg">
-                </div>
-    
-                <div class="col-md-3 col-sm-6" style="margin-top:20px; background-color:white;">
-                  <h4>Get the news</h4>
-                   <p class="text-mutes">
-                    Subscribe here for geting of IICS College
-                   </p>
-                   <form action="" method="post">
+                  <form action="" method="post">
                     <div class="input-group">
-                       <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email">
-                       <span class="input-group-btn">
-                         <input type="submit" value="Subscribe" class="btn btn-default">
-                       </span>
+                        <input type="text" name="email" id="email" class="form-control">
+                        <span class="input-group-btn">
+                            <input type="submit" value="Submit" class="btn btn-default">
+                        </span>
                     </div>
-                   </form>
-                   <hr>
-                   <h4>Stay In Touch</h4>
+                  </form>
+                  <hr>
+                  <h4>Stay In Touch</h4>
                    <p class="social">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;
-                    <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><i class="fa fa-twitter"></i></a>&nbsp;
-                    <a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;
-                    <!-- <a href=""><i class="fa fa-google-plus"></i></a>&nbsp; -->
-                    <!-- <a href=""><i class="fa fa-envelope"></i></a>&nbsp;
-                    <a href="https://www.youtube.com/channel/UCjfBX1RdSBEC2jDG_87mRkA"><i class="fa fa-youtube"></i></a>&nbsp;
-                 
+                     <a href="#"><i class="fa fa-facebook"></i></a>
+                     <a href="#"><i class="fa fa-instagram"></i></a>
+                     <a href="#"><i class="fa fa-twitter"></i></a>
+                     <a href="#"><i class="fa fa-google-plus"></i></a>
+                     <a href="#"><i class="fa fa-envelope"></i></a>
                    </p>
-                </div> -->
-                 .
-
-            <!-- </div>
+               <!--4 col-md-3 end  -->
+           </div>
         </div>
-    </div> -->
+        <!-- Footer End -->
+    </div>
+    <!-- CopyRight Section Start -->
+    <div id="copyright">
+        <div class="container">
+            <div  class="col-md-6">
+              <p class="pull-left">
+                 &copy; 2022 Er. IICS College
+              </p>
+            </div class="col-md-6">
+              <p class="pull-right">
+                Template By : <a href="#">Me</a>
+              </p>
+            <div>
 
-     <div id="copyright">
-       <div class="container">
-         <div class="col-md-6">
-           <p class="pull-left">
-             &copy;2024 Er.Mohammad Faij Ansari
-           </p>
-         </div>
-         <div class="col-md-6">
-            <p class="pull-right">
-              Template By <a href="www.google.com">Google</a>
-            </p>
-         </div>
-       </div>
-     </div>
-
-
+            </div>
+        </div>
+    </div>
+     <!-- CopyRight Section End -->
 </body>
 </html>
