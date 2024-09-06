@@ -1,5 +1,6 @@
 <?php
  include("include/db.php");
+ include("admin_area/function/function.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -223,27 +224,13 @@
     <div class="container">
         <div class="row">
             <!-- 1 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/mobile1.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">Mobile</a></h3>
-                        <p class="price">₹ 12,999</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+             <?php
+               getPro();
+             ?>
             <!-- 1 Product End -->
 
             <!-- 2 Product Start -->
-            <div class="col-sm-4 col-md-3">
+            <!-- <div class="col-sm-4 col-md-3">
                 <div class="product">
                     <a href="details.php">
                         <img src="admin_area/product_images/laptop1.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
@@ -259,128 +246,10 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- 2 Product End -->
 
-            <!-- 3 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/t-shirt.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">T-Shirt Black Color</a></h3>
-                        <p class="price">₹ 299</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 3 Product End -->
-
-            <!-- 4 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/laptop3.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">MacBook</a></h3>
-                        <p class="price">₹ 1,29,999</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 4 Product End -->
-
-            <!-- 5 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/jeans.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">Jeans</a></h3>
-                        <p class="price">₹ 1,299</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 5 Product End -->
-
-            <!-- 6 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/formalpaints.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">Formal Pants</a></h3>
-                        <p class="price">₹ 1,599</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 6 Product End -->
-
-            <!-- 7 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/formalpaints.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">Formal Pants</a></h3>
-                        <p class="price">₹ 1,599</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 7 Product End -->
-
-            <!-- 8 Product Start -->
-            <div class="col-sm-4 col-md-3">
-                <div class="product">
-                    <a href="details.php">
-                        <img src="admin_area/product_images/formalpaints.jpeg" alt="Image Not Found" class="img-responsive" id="images1">
-                    </a>
-                    <div class="text">
-                        <h3><a href="details.php" id="hide">Formal Pants</a></h3>
-                        <p class="price">₹ 1,599</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- 8 Product End -->
+            
         </div>
     </div>
     <!-- Products End -->
