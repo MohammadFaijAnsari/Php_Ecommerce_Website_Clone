@@ -1,3 +1,7 @@
+<?php
+ include("include/db.php");
+ include("functions/function.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +27,7 @@
              <a href="#" class="btn btn-success btn-sm">
                 Welcome Guest
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2</a>
+             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2 </a>
           </div>
           <div class="col-md-6">
             <ul class="menu">
@@ -96,7 +100,7 @@
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span >4 Item in Card</span>
+                 <span > 2 Item in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >

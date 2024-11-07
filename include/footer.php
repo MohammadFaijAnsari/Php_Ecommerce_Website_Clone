@@ -1,9 +1,11 @@
+<?php include("db.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <div id='footer'>
@@ -33,13 +35,24 @@
                <div class="col-md-3 col-sm-6">
                   <h4>Top Categories</h4>
                    <ul>
-                     <li><a href="">Jacket</a></li>
+                    <?php
+                     $get_p_cats="SELECT *FROM product_categories";
+                     $run_p_cats=mysqli_query($con,$get_p_cats);
+                     while($row=mysqli_fetch_array($run_p_cats)){
+                         $p_cat_id=$row['p_cat_Id'];
+                         $p_cat_title=$row['p_cat_title'];
+                         echo "
+                           <li><a href='shop.php?p_cat_id=$p_cat_id'>$p_cat_title</a></li>
+                         ";
+                     }
+                    ?>
+                     <!-- <li><a href="">Jacket</a></li>
                      <li><a href="">Accessories</a></li>
                      <li><a href="">Shoes</a></li>
                      <li><a href="">Coats</a></li>
-                     <li><a href="">T-Shirt</a></li>
+                     <li><a href="">T-Shirt</a></li> -->
                    </ul>
-                   <hr class="hidden-md hidden-lg">
+                   <hr class="hidden-md hidden-lg" >
 
                </div>
                <!--2 col-md-3 end -->

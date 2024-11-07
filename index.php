@@ -1,6 +1,6 @@
 <?php
  include("include/db.php");
- include("admin_area/function/function.php")
+ include("functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,13 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Website</title>
     <style>
-      #images{
-        width: 100%;
-        height: 40%;
-      }
-      #latest-box{
+      h2{
         text-align: center;
-        font-style: oblique;
       }
     </style>
     <!-- Link Style Folder -->
@@ -39,7 +34,7 @@
                     <a href="#" class="btn btn-success btn-sm">
                         Welcome Guest
                     </a>
-                    <a href="#" id="link">Shopping Cart Total Price: INR 100 Total items 2</a>
+                    <a href="#" id="link">Shopping Cart Total Price: INR 100 Total items 2 </a>
                 </div>
                 <div class="col-md-6">
                     <ul class="menu">
@@ -86,7 +81,7 @@
 
                 <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>4 Items in Cart</span>
+                    <span>2  Items in Cart</span>
                 </a>
 
                 <div class="navbar-collapse collapse right">
@@ -149,7 +144,7 @@
                    $slider_image=$row['slider_image'];
                    echo "
                      <div class='item'>
-                     <img src='admin_area/slider_images/$slider_image' id='images'/>
+                       <img src='admin_area/slider_images/$slider_image' id='images'/>
                      </div>
                    ";
                  }
@@ -248,6 +243,7 @@
                 </div>
             </div> -->
             <!-- 2 Product End -->
+             
 
             
         </div>

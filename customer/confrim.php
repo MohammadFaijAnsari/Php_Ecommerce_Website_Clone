@@ -1,3 +1,7 @@
+<?php
+ include("include/db.php");
+ include("functions/function.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
