@@ -1,6 +1,6 @@
 <?php
 include_once("include/db.php");
-include_once("functions/function.php");
+// include_once("functions/function.php");
 
 // Check if the product ID is set
 if (isset($_GET['pro_id'])) {
@@ -22,10 +22,10 @@ if (isset($_GET['pro_id'])) {
     $p_cat_id = $row_product['cat_id'];
 
     // Fetch category title based on the product category ID
-    $get_p_cat = "SELECT * FROM categories WHERE cat_id = '$p_cat_id'";
+    $get_p_cat = "SELECT * FROM product_categories WHERE p_cat_id = '$p_cat_id'";
     $run_p_cat = mysqli_query($con, $get_p_cat);
     $row_p_cat = mysqli_fetch_array($run_p_cat);
-    $p_cat_title = $row_p_cat['cat_title'];
+    $p_cat_title = $row_p_cat['p_cat_title'];
 }
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ if (isset($_GET['pro_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php ?> - E-Commerce Website</title>
+    <title><?php echo $p_title;?> - E-Commerce Website</title>
     <style>
         #carousel-image { 
             height: 400px; 
@@ -129,8 +129,8 @@ if (isset($_GET['pro_id'])) {
                 <ul class="breadcrumb">
                     <li><a href="home.php">Home</a></li>
                     <li>Shop</li>
-                    <li><a href="shop.php?p_cat=<?php ?>"><?php  ?></a></li>
-                    <li><?php ?></li>
+                    <li><a href="shop.php?p_cat=<?php echo $p_cat_id;?>"><?php echo $p_cat_title; ?></a></li>
+                    <li><?php echo $p_title; ?></li>
                 </ul>
             </div>
 
@@ -153,13 +153,13 @@ if (isset($_GET['pro_id'])) {
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 1" class="img-responsive" id="carousel-image"></center>
+                                        <center><img src="admin_area/product_images_downloads/<?php echo $p_img1;?>" alt="Product Image 1" class="img-responsive" id="carousel-image"></center>
                                     </div>
                                     <div class="item">
-                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 2" class="img-responsive" id="carousel-image"></center>
+                                        <center><img src="admin_area/product_images_downloads/<?php echo $p_img2;?>" alt="Product Image 2" class="img-responsive" id="carousel-image"></center>
                                     </div>
                                     <div class="item">
-                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 3" class="img-responsive" id="carousel-image"></center>
+                                        <center><img src="admin_area/product_images_downloads/<?php echo $p_img3;?>" alt="Product Image 3" class="img-responsive" id="carousel-image"></center>
                                     </div>
                                 </div>
                                 <a href="#myCarousel" class="left carousel-control" data-slide="prev">
@@ -174,7 +174,7 @@ if (isset($_GET['pro_id'])) {
 
                     <div class="col-sm-6">
                         <div class="product-info-box">
-                            <h1 class="text-center"><?php  ?></h1>
+                            <h1 class="text-center"><?php echo $p_title; ?></h1>
                             <form action="details.php?add_cart=<?php  ?>" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-md-5 control-label">Product Quantity</label>
@@ -200,7 +200,7 @@ if (isset($_GET['pro_id'])) {
                                         </select>
                                     </div>
                                 </div>
-                                <p class="price">₹ <?php  ?></p>
+                                <p class="price">₹ <?php echo $p_price;  ?></p>
                                 <p class="text-center button">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="fa fa-shopping-cart"></i> Add to Cart
