@@ -1,99 +1,81 @@
 <?php
 include_once("include/db.php");
 include_once("functions/function.php");
-?>
-<?php
+
+// Check if the product ID is set
 if (isset($_GET['pro_id'])) {
     global $con;
     $pro_id = $_GET['pro_id'];
-    $get_product = "SELECT *FROM product WHERE product_id='$pro_id' ";
+
+    // Fetch product details
+    $get_product = "SELECT * FROM product WHERE product_id = '$pro_id'";
     $run_product = mysqli_query($con, $get_product);
     $row_product = mysqli_fetch_array($run_product);
 
-    $p_cat_id = $row_product['p_cat_id'];
+    // Assign product details to variables
     $p_title = $row_product['product_title'];
     $p_img1 = $row_product['product_img1'];
     $p_img2 = $row_product['product_img2'];
     $p_img3 = $row_product['product_img3'];
     $p_price = $row_product['product_price'];
     $p_desc = $row_product['product_desc'];
+    $p_cat_id = $row_product['cat_id'];
 
-    $get_p_cat = "SELECT *FROM categories WHERE p_cat_id='$p_cat_id' ";
+    // Fetch category title based on the product category ID
+    $get_p_cat = "SELECT * FROM categories WHERE cat_id = '$p_cat_id'";
     $run_p_cat = mysqli_query($con, $get_p_cat);
     $row_p_cat = mysqli_fetch_array($run_p_cat);
-    $p_cat_id = $row_p_cat['p_cat_id'];
-    $p_cat_title = $row_p_cat['p_cat_title'];
+    $p_cat_title = $row_p_cat['cat_title'];
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website</title>
+    <title><?php ?> - E-Commerce Website</title>
     <style>
-        #carousel-image {
-            height: 400px;
+        #carousel-image { 
+            height: 400px; 
         }
-
-        .product-info-box {
+        .product-info-box { 
             border: 1px solid #ddd;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 20px; 
             background-color: #f9f9f9;
-        }
-
+         }
         .product-info-box h1 {
-            margin-bottom: 20px;
-        }
+             margin-bottom: 20px; 
+            }
     </style>
-    <!-- Link Style Folder  -->
     <link rel="stylesheet" href="style/style.css">
-    <!-- CSS CDN link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
     <!-- Top Bar Start -->
-    <div id='top'>
-        <!-- Container Start -->
+    <div id="top">
         <div class="container">
             <div class="col-md-6 offer">
-                <a href="#" class="btn btn-success btn-sm">
-                    Welcome Guest
-                </a>
+                <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
                 <a href="#" id="link">Shopping Cart Total Price: INR 100, Total items: 2 </a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
-                    <li>
-                        <a href="customer_registration.php" id="link">Register</a>
-                    </li>
-                    <li>
-                        <a href="checkout.php" id="link">My Account</a>
-                    </li>
-                    <li>
-                        <a href="card.php" id="link">Cart</a>
-                    </li>
-                    <li>
-                        <a href="login.php" id="link">Login</a>
-                    </li>
+                    <li><a href="customer_registration.php" id="link">Register</a></li>
+                    <li><a href="checkout.php" id="link">My Account</a></li>
+                    <li><a href="card.php" id="link">Cart</a></li>
+                    <li><a href="login.php" id="link">Login</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Container End -->
     </div>
-    <!-- Top Bar End -->
-    <!-- Start Navbar -->
-    <div class="navbar navbar-default" id='navbar'>
+    <!-- Navbar Start -->
+    <div class="navbar navbar-default" id="navbar">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle='collapse' data-target='#navigation'>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-align-justify"></i>
                 </button>
@@ -102,42 +84,23 @@ if (isset($_GET['pro_id'])) {
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-
-            <div class="navbar-collapse collapse" id='navigation'>
-                <!-- Padding Nav Start -->
+            <div class="navbar-collapse collapse" id="navigation">
                 <div class="padding-nav">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="index.php">Home</a>
-                        </li>
-                        <li class="active">
-                            <a href="shop.php">Shop</a>
-                        </li>
-                        <li>
-                            <a href="checkout.php">My Account</a>
-                        </li>
-                        <li>
-                            <a href="card.php">Shopping Cart</a>
-                        </li>
-                        <li>
-                            <a href="about.php">About Us</a>
-                        </li>
-                        <li>
-                            <a href="services.php">Services</a>
-                        </li>
-                        <li>
-                            <a href="contactus.php">Contact Us</a>
-                        </li>
+                        <li><a href="index.php">Home</a></li>
+                        <li class="active"><a href="shop.php">Shop</a></li>
+                        <li><a href="checkout.php">My Account</a></li>
+                        <li><a href="card.php">Shopping Cart</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="services.php">Services</a></li>
+                        <li><a href="contactus.php">Contact Us</a></li>
                     </ul>
                 </div>
-                <!-- Padding Nav End -->
-
                 <a href="cart.php" class="btn btn-primary navbar-btn right" id="click">
-                    <i class='fa fa-shopping-cart'></i>
-                    <span>2 Items in Cart</span>
+                    <i class="fa fa-shopping-cart"></i> <span>2 Items in Cart</span>
                 </a>
                 <div class="navbar-collapse collapse right">
-                    <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
                         <span class="sr-only">Toggle Search</span>
                         <i class="fa fa-search"></i>
                     </button>
@@ -157,38 +120,28 @@ if (isset($_GET['pro_id'])) {
             </div>
         </div>
     </div>
-    <!-- End Navbar -->
+    <!-- Navbar End -->
 
-    <div id='content'> <!-- Content Start -->
-        <div class="container"> <!-- Container Start -->
-            <div class="col-md-12"> <!-- Col md 12 Start -->
+    <!-- Content Start -->
+    <div id="content">
+        <div class="container">
+            <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li>
-                        <a href="home.php">Home</a>
-                    </li>
-                    <li>
-                        Shop
-                    </li>
-                    <li>
-                        <a href="shop.php?p_cat=<?php echo $p_cat_id; ?>">
-                            <?php echo $p_cat_title; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <?php echo $p_cat_title; ?>
-                    </li>
-
+                    <li><a href="home.php">Home</a></li>
+                    <li>Shop</li>
+                    <li><a href="shop.php?p_cat=<?php ?>"><?php  ?></a></li>
+                    <li><?php ?></li>
                 </ul>
-            </div> <!-- Col md 12 End -->
+            </div>
 
-            <div class="col-md-3"> <!--Col md 3 Start-->
-                <?php
-                include_once "include/sidebar.php";
-                ?>
-            </div> <!-- Col md 3 End -->
+            <!-- Sidebar Start -->
+            <div class="col-md-3">
+                <?php include_once "include/sidebar.php"; ?>
+            </div>
+            <!-- Sidebar End -->
 
-            <!-- Carousel and Product Info Start -->
             <div class="col-md-9">
+                <!-- Product Images Carousel Start -->
                 <div class="row" id="productmain">
                     <div class="col-sm-6">
                         <div id="mainimage">
@@ -199,48 +152,30 @@ if (isset($_GET['pro_id'])) {
                                     <li data-target="#myCarousel" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
-                                    <!-- Product 1 Start -->
                                     <div class="item active">
-                                        <center>
-                                            <img src="admin_area/product_images_downloads/<?php echo  $p_img1 ?>" alt="Image Not Found" class="img-responsive" id='carousel-image'>
-                                        </center>
+                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 1" class="img-responsive" id="carousel-image"></center>
                                     </div>
-                                    <!-- Product 1 End -->
-                                    <!-- Product 2 Start -->
                                     <div class="item">
-                                        <center>
-                                            <img src="admin_area/product_images_downloads/<?php echo  $p_img2 ?>" alt="Image Not Found" class="img-responsive" id='carousel-image'>
-                                        </center>
+                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 2" class="img-responsive" id="carousel-image"></center>
                                     </div>
-                                    <!-- Product 2 End -->
-                                    <!-- Product 3 Start -->
                                     <div class="item">
-                                        <center>
-                                            <img src="admin_area/product_images_downloads/<?php echo  $p_img3 ?>" alt="Image Not Found" class="img-responsive" id='carousel-image'>
-                                        </center>
+                                        <center><img src="admin_area/product_images_downloads/laptop1.jpeg" alt="Product Image 3" class="img-responsive" id="carousel-image"></center>
                                     </div>
-                                    <!-- Product 3 End -->
                                 </div>
-                                <!-- Left and right controls -->
                                 <a href="#myCarousel" class="left carousel-control" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
-                                    <span class="sr-only">Previous</span>
                                 </a>
                                 <a href="#myCarousel" class="right carousel-control" data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
-                                    <span class="sr-only">Next</span>
                                 </a>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-6">
                         <div class="product-info-box">
-                            <h1 class="text-center"><?php echo $p_title; ?> </h1>
-                            <!-- From Start -->
-                            <?php
-                            //    addCart();
-                            ?>
-                            <form action="details.php?add_cart=<?php echo $pro_id; ?>" method="post" class="form-horizontal">
+                            <h1 class="text-center"><?php  ?></h1>
+                            <form action="details.php?add_cart=<?php  ?>" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-md-5 control-label">Product Quantity</label>
                                     <div class="col-md-7">
@@ -265,44 +200,22 @@ if (isset($_GET['pro_id'])) {
                                         </select>
                                     </div>
                                 </div>
-                                <p class="price">₹ <?php echo $p_price ?></p>
+                                <p class="price">₹ <?php  ?></p>
                                 <p class="text-center button">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-shopping-cart"></i>Add to Cart
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
                                     </button>
-
                                 </p>
-
                             </form>
-                            <!-- Form End -->
                         </div>
-                        <!-- Box End -->
-                        <!-- Related Images Start-->
-                        <div class="col-xs-4">
-                            <a href="#" class="thumb">
-                                <img src="admin_area/product_images_downloads/<?php echo  $p_img1 ?>" class='img-responsive' alt="Image Not Fond" srcset="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="#" class="thumb">
-                                <img src="admin_area/product_images_downloads/<?php echo  $p_img2 ?>" class='img-responsive' alt="Image Not Fond" srcset="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="#" class="thumb">
-                                <img src="admin_area/product_images_downloads/<?php echo  $p_img3 ?>" class='img-responsive' alt="Image Not Fond" srcset="">
-                            </a>
-                        </div>
-                        <!-- Related Images End-->
                     </div>
                 </div>
+
                 <!-- Product Details Start -->
-                <div class="box" id='details'>
+                <div class="box" id="details">
                     <h4 class="text-center">Product Details</h4>
-                    <p><?php echo $p_desc; ?></p>
-                    <h4 class="text-center">Size</h4>
+                    <p><?php ?></p>
+                    <h4 class="text-center">Available Sizes</h4>
                     <ul>
                         <li>Small</li>
                         <li>Medium</li>
@@ -312,64 +225,56 @@ if (isset($_GET['pro_id'])) {
                 </div>
                 <!-- Product Details End -->
 
-                <!-- Box Start -->
-                <div id='row same-height-row'>
+                <!-- You may also like products -->
+                <div id="row same-height-row">
                     <div class="col-md-3 col-sm-6">
                         <div class="box same-height headline">
-                            <h3 class="text-center">You also Like These Products7</h3>
+                            <h3 class="text-center">You may also like these products</h3>
                         </div>
                     </div>
-                    <!-- center-responsive col-md-3 start -->
                     <div class="center-responsive col-md-3">
                         <div class="product same-height">
-                            <a href="">
-                                <img src="admin_area/product_images/laptop1.jpeg" class='img-responsive' alt="" srcset="">
+                            <a href="#">
+                                <img src="admin_area/product_images_downloads/laptop1.jpeg" class="img-responsive" alt="Laptop1">
                             </a>
                             <div class="text">
-                                <h3><a href="details.php" id='hide'>Laptop Mackbook</a></h3>
+                                <h3><a href="#">Laptop Mackbook</a></h3>
                                 <p class="price">₹ 1,90,000</p>
                             </div>
                         </div>
                     </div>
-
                     <div class="center-responsive col-md-3">
                         <div class="product same-height">
-                            <a href="">
-                                <img src="admin_area/product_images/laptop3.jpeg" class='img-responsive' alt="" srcset="">
+                            <a href="#">
+                                <img src="admin_area/product_images_downloads/laptop3.jpeg" class="img-responsive" alt="Laptop3">
                             </a>
                             <div class="text">
-                                <h3><a href="details.php" id='hide'>Laptop Mackbook</a></h3>
+                                <h3><a href="#">Laptop Mackbook</a></h3>
                                 <p class="price">₹ 1,90,000</p>
                             </div>
                         </div>
                     </div>
-
                     <div class="center-responsive col-md-3">
                         <div class="product same-height">
-                            <a href="">
-                                <img src="admin_area/product_images/laptop2.jpeg" class='img-responsive' alt="" srcset="">
+                            <a href="#">
+                                <img src="admin_area/product_images_downloads/laptop2.jpeg" class="img-responsive" alt="Laptop2">
                             </a>
                             <div class="text">
-                                <h3><a href="details.php" id='hide'>Laptop Mackbook</a></h3>
+                                <h3><a href="#">Laptop Mackbook</a></h3>
                                 <p class="price">₹ 1,90,000</p>
                             </div>
                         </div>
                     </div>
-                    <!-- center-responsive col-md-3 end -->
                 </div>
-                <!-- Box End -->
             </div>
-            <!-- Carousel and Product Info End -->
         </div>
     </div>
     <!-- Content End -->
 
     <!-- Footer Include -->
-    <?php
-    include "include/footer.php";
-    ?>
+    <?php include "include/footer.php"; ?>
+
     <!-- JavaScript Include -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -1,4 +1,6 @@
-
+<?php
+//  include("functions/function.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +16,15 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        #images {
-            height: 150px;
-            width: 280px;
-        }
+    #images{
+      width: 260px;
+    height: 200px;
+    /* margin-left: 10px; */
+  }
+
+  #hide {
+    text-decoration: none;
+  }
     </style>
 </head>
 <body>
@@ -145,14 +152,14 @@
                             $pro_price = $row['product_price'];
                             $pro_img1 = $row['product_img1'];
                             echo "
-                            <div class='col-md-4 col-sm-6 center-responsive'>
+                            <div class='col-md-4 col-sm-6 center-responsive '>
                                 <div class='product'>
                                     <a href='details.php?pro_id=$pro_id'>
                                       <img src='admin_area/product_images_downloads/$pro_img1' class='img-responsive' id='images'/>
                                     </a>
                                 </div>
                                 <div class='text'>
-                                    <h3><a href='details.php?pro_id=$pro_id'>$pro_title</a></h3>
+                                    <h3><a href='details.php?pro_id=$pro_id' id='hide'>$pro_title</a></h3>
                                     <p class='price' id='price'>₹ $pro_price</p>
                                     <p class='buttons'>
                                       <a href='details.php?pro_id=$pro_id' class='btn btn-default'>View Details</a>
@@ -173,7 +180,7 @@
                 <!-- Product Filter Function End -->
                 <!-- Product Filter Category Wise Start -->
                   <?php
-                //    getCatPro();
+                   getCatPro();
                   ?>
                 <!-- Product Filter Category Wise End -->
                 <!-- Pagination Start -->
