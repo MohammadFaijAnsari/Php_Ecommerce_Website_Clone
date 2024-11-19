@@ -34,7 +34,7 @@
                     <a href="#" class="btn btn-success btn-sm">
                         Welcome Guest
                     </a>
-                    <a href="#" id="link">Shopping Cart Total Price: INR 100 Total items 2 </a>
+                    <a href="#" id="link">Shopping Cart Total Price: INR 100 Total Item:<?php item();?></a>
                 </div>
                 <div class="col-md-6">
                     <ul class="menu">
@@ -81,7 +81,7 @@
 
                 <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>2  Items in Cart</span>
+                    <span><?php item();?> Items in Cart</span>
                 </a>
 
                 <div class="navbar-collapse collapse right">

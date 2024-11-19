@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +25,7 @@
              <a href="#" class="btn btn-success btn-sm">
                 Welcome Guest
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2 </a>
+             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items: </a>
           </div>
           <div class="col-md-6">
             <ul class="menu">

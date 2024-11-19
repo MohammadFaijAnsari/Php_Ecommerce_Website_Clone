@@ -1,5 +1,5 @@
 <?php
-//  include("functions/function.php");
+ include("functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +18,7 @@
     <style>
     #images{
       width: 260px;
-    height: 200px;
-    /* margin-left: 10px; */
+      height: 200px;
   }
 
   #hide {
@@ -34,7 +33,7 @@
         <div class="container">
             <div class="col-md-6 offer">
                 <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
-                <a href="#" id="link">Shopping Cart Total Price: INR 100 Total items </a>
+                <a href="#" id="link">Shopping Cart Total Price: INR 100 Total items: </a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
@@ -152,7 +151,7 @@
                             $pro_price = $row['product_price'];
                             $pro_img1 = $row['product_img1'];
                             echo "
-                            <div class='col-md-4 col-sm-6 center-responsive '>
+                            <div class='col-md-4 col-sm-6 center-responsive'>
                                 <div class='product'>
                                     <a href='details.php?pro_id=$pro_id'>
                                       <img src='admin_area/product_images_downloads/$pro_img1' class='img-responsive' id='images'/>

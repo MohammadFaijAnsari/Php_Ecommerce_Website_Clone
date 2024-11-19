@@ -1,5 +1,5 @@
 <!-- <?php
-include "config.php";
+include ("config.php");
 if(isset($_POST['set'])){
    $name = mysqli_real_escape_string($conn,$_POST['n']);
    $email = mysqli_real_escape_string($conn,$_POST['e']);

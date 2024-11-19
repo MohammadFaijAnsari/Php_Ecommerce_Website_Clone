@@ -27,7 +27,7 @@
              <a href="#" class="btn btn-success btn-sm">
                 Welcome Guest
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2 </a>
+             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items:<?php item();?></a>
           </div>
           <div class="col-md-6">
             <ul class="menu">
@@ -100,7 +100,7 @@
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span > 2 Item in Card</span>
+                 <span > <?php item();?> Item in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >
@@ -141,7 +141,7 @@
                <div class="box" >
                   <form action="cart.php" method="post" enctype="multipart/form-data">
                      <h1>Shopping Cart</h1>
-                     <p class="text-muted">Currently You have 3 item in your cart</p>
+                     <p class="text-muted">Currently You have <b><?php item();?></b> item in your cart</p>
                      <!-- Table Start -->
                       <div class="table-responsive">
                          <table class="table">

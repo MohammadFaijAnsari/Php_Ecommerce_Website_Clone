@@ -1,3 +1,4 @@
+
 <style>
   #image{
     width: 260px;
@@ -14,6 +15,54 @@ if ($db) {
 } else {
   echo "DataBase Not Connect" . mysqli_connect_error($db);
 }
+// Get Ip Address Start
+ function getUserIp(){
+  switch(true){
+    case (!empty($_SERVER['HTTP_X_REAL_IP'])) : 
+      return $_SERVER['HTTP_X_REAL_IP'];  
+    case(!empty($_SERVER['HTTP_CLIENT_IP']))  :
+      return $_SERVER['HTTP_CLIENT_IP'];
+    case (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) :
+      return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    default : return $_SERVER['REMOTE_ADDR'];
+  }
+ }
+// Get Ip Address End
+// Add Cart Start
+function addcart(){
+  global $db;
+  if(isset($_GET['add_cart'])){
+    $ip_address=getUserIp();
+    $p_id=$_GET['add_cart'];
+    $product_qty=$_POST['product_qty'];
+    $product_size=$_POST['product_size'];
+    $check_product="SELECT * FROM cart WHERE ip_add='$ip_address' AND p_id='$p_id' ";
+    $run_product=mysqli_query($db,$check_product);
+    if(mysqli_num_rows($run_product)>0){
+      echo "
+        <script>alert('This Product Is Already Added');</script>
+       ";
+      header("Location:/details.php");
+    }else{
+      $query="INSERT INTO cart(p_id,ip_add,qty,size) VALUES('$p_id','$ip_address','$product_qty','$product_size')";
+      $run=mysqli_query($db,$query);
+      header("Location:/details.php");
+    }
+
+  }
+}
+// Add Cart End
+
+// Items Counts Start
+ function item(){
+  global $db;
+  $ip_address= getUserIp();
+  $get_items="SELECT * FROM cart WHERE ip_add= '$ip_address' ";
+  $run_items=mysqli_query($db,$get_items);
+  $count=mysqli_num_rows($run_items);
+  echo $count;
+ }
+// Items Counts End
 
 //  Index Page Product Display
 function getPro()
@@ -29,7 +78,7 @@ function getPro()
 
     echo "
         <div class='col-md-3 col-sm-6 center-responsive'>
-          <div class='product'>
+          <div class='product '>
             <a href='details.php?product_id=$product_id'>
               <img src='admin_area/product_images/$product_img1' class='img-responsive' id='image' name='image'/>
             </a>
@@ -39,8 +88,8 @@ function getPro()
              <p class='price'>₹ $product_price</p>
              <p class='buttons'>
              &nbsp;&nbsp;
-              <a href='details.php?product_id=$product_id' class='btn btn-default'>View Details</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href='details.php?product_id=$product_id' class='btn btn-primary'><i class='fa fa-shopping-cart'></i>Add to Cart</a>
+              <a href='details.php?pro_id=$product_id' class='btn btn-default'>View Details</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href='details.php?pro_id=$product_id' class='btn btn-primary'><i class='fa fa-shopping-cart'></i>Add to Cart</a>
               </p>
             </div>
 

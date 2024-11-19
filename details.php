@@ -1,6 +1,7 @@
 <?php
-include_once("include/db.php");
-// include_once("functions/function.php");
+include("include/db.php");
+error_reporting(false);
+// include("functions/function.php");
 
 // Check if the product ID is set
 if (isset($_GET['pro_id'])) {
@@ -8,7 +9,7 @@ if (isset($_GET['pro_id'])) {
     $pro_id = $_GET['pro_id'];
 
     // Fetch product details
-    $get_product = "SELECT * FROM product WHERE product_id = '$pro_id'";
+    $get_product = "SELECT * FROM product WHERE product_id = '$pro_id' ";
     $run_product = mysqli_query($con, $get_product);
     $row_product = mysqli_fetch_array($run_product);
 
@@ -59,7 +60,7 @@ if (isset($_GET['pro_id'])) {
         <div class="container">
             <div class="col-md-6 offer">
                 <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
-                <a href="#" id="link">Shopping Cart Total Price: INR 100, Total items: 2 </a>
+                <a href="#" id="link">Shopping Cart Total Price: INR 100, Total items:<?php item();?></a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
@@ -97,7 +98,7 @@ if (isset($_GET['pro_id'])) {
                     </ul>
                 </div>
                 <a href="cart.php" class="btn btn-primary navbar-btn right" id="click">
-                    <i class="fa fa-shopping-cart"></i> <span>2 Items in Cart</span>
+                    <i class="fa fa-shopping-cart"></i> <span><?php item();?> Items in Cart</span>
                 </a>
                 <div class="navbar-collapse collapse right">
                     <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
@@ -127,7 +128,7 @@ if (isset($_GET['pro_id'])) {
         <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li><a href="home.php">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>Shop</li>
                     <li><a href="shop.php?p_cat=<?php echo $p_cat_id;?>"><?php echo $p_cat_title; ?></a></li>
                     <li><?php echo $p_title; ?></li>
@@ -175,7 +176,10 @@ if (isset($_GET['pro_id'])) {
                     <div class="col-sm-6">
                         <div class="product-info-box">
                             <h1 class="text-center"><?php echo $p_title; ?></h1>
-                            <form action="details.php?add_cart=<?php  ?>" method="post" class="form-horizontal">
+                            <?php
+                              addcart();
+                            ?>
+                            <form action="details.php?add_cart=<?php echo $pro_id;  ?>" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-md-5 control-label">Product Quantity</label>
                                     <div class="col-md-7">
@@ -227,34 +231,40 @@ if (isset($_GET['pro_id'])) {
 
                 <!-- You may also like products -->
                 <div id="row same-height-row">
+                    <!-- col-sm-3 start -->
                     <div class="col-md-3 col-sm-6">
                         <div class="box same-height headline">
                             <h3 class="text-center">You may also like these products</h3>
                         </div>
                     </div>
-                    <div class="center-responsive col-md-3">
-                        <div class="product same-height">
-                            <a href="#">
-                                <img src="admin_area/product_images_downloads/laptop1.jpeg" class="img-responsive" alt="Laptop1">
-                            </a>
-                            <div class="text">
-                                <h3><a href="#">Laptop Mackbook</a></h3>
-                                <p class="price">₹ 1,90,000</p>
+                    <!-- col-sm-3 end -->
+                     <?php
+                       $get_product="SELECT *FROM product ORDER BY 1 LIMIT 0,3";
+                       $run_product=mysqli_query($con,$get_product);
+                       while($res=mysqli_fetch_array($run_product)){
+                          $pro_id=$res['product_id'];
+                          $product_title=$res['product_title'];
+                          $product_price=$res['product_price'];
+                          $product_img1=$res['product_img1'];
+                          echo "
+                           <div class='center-responsive col-md-3'>
+                            <div class='product  same-height'>
+                             <a href='details.php?pro_id='$pro_id' '>
+                              <img src='admin_area/product_images/$product_img1' id='image' class='img-responsive' height='200px' width='200px'/>
+                             </a>
+                             <div class='text'>
+                               <h3><a href='details.php?pro_id=$pro_id' id='hide'>$product_title</a></h3>
+                               <p class='price'>₹ $product_price</p>
+                             </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="center-responsive col-md-3">
-                        <div class="product same-height">
-                            <a href="#">
-                                <img src="admin_area/product_images_downloads/laptop3.jpeg" class="img-responsive" alt="Laptop3">
-                            </a>
-                            <div class="text">
-                                <h3><a href="#">Laptop Mackbook</a></h3>
-                                <p class="price">₹ 1,90,000</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="center-responsive col-md-3">
+                           </div>
+                          
+                          ";
+                       }                     
+                     ?>
+                    
+                    
+                    <!-- <div class="center-responsive col-md-3">
                         <div class="product same-height">
                             <a href="#">
                                 <img src="admin_area/product_images_downloads/laptop2.jpeg" class="img-responsive" alt="Laptop2">
@@ -264,7 +274,7 @@ if (isset($_GET['pro_id'])) {
                                 <p class="price">₹ 1,90,000</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
