@@ -1,7 +1,7 @@
 <?php
 include("include/db.php");
 error_reporting(false);
-// include("functions/function.php");
+include("functions/function.php");
 
 // Check if the product ID is set
 if (isset($_GET['pro_id'])) {

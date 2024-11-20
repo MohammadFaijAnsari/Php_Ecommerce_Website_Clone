@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <style>
+      
+    </style>
 </head>
 <body>
     <div id='footer'>
@@ -86,13 +88,13 @@
                   </form>
                   <hr>
                   <h4>Stay In Touch</h4>
-                   <p class="social">
-                     <a href="#"><i class="fa fa-facebook"></i></a>
-                     <a href="#"><i class="fa fa-instagram"></i></a>
-                     <a href="#"><i class="fa fa-twitter"></i></a>
-                     <a href="#"><i class="fa fa-google-plus"></i></a>
-                     <a href="#"><i class="fa fa-envelope"></i></a>
-                   </p>
+                  <p class="social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-google-plus"></i></a>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+    </p>
                <!--4 col-md-3 end  -->
            </div>
         </div>

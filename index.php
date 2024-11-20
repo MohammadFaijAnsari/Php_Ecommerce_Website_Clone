@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-md-6 offer">
                     <a href="#" class="btn btn-success btn-sm">
-                        Welcome Guest
+                     Welcome Guest
                     </a>
                     <a href="#" id="link">Shopping Cart Total Price: INR 100 Total Item:<?php item();?></a>
                 </div>
