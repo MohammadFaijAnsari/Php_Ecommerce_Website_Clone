@@ -15,6 +15,7 @@ if ($db) {
 } else {
   echo "DataBase Not Connect" . mysqli_connect_error($db);
 }
+
 // Get Ip Address Start
  function getUserIp(){
   switch(true){
@@ -28,6 +29,7 @@ if ($db) {
   }
  }
 // Get Ip Address End
+
 // Add Cart Start
 function addcart(){
   global $db;
@@ -48,10 +50,33 @@ function addcart(){
       $run=mysqli_query($db,$query);
       header("Location:/details.php");
     }
-
   }
 }
 // Add Cart End
+
+// Total Price Caliculate the Add To Cart Start
+ function price_count(){
+  global $db;
+  $ip_address=getUserIp();
+  $total=0;
+  $select_cart="SELECT * FROM cart WHERE ip_add='$ip_address' ";
+  $run_cart=mysqli_query($db,$select_cart);
+  while($res=mysqli_fetch_array($run_cart)){
+   $pro_id=$res['p_id'];
+   $pro_qty=$res['qty'];
+   $pro_size=$res['size'];
+
+   $get_price="SELECT * FROM product WHERE product_id='$pro_id' ";
+   $run_price=mysqli_query($db,$get_price);
+   while($row=mysqli_fetch_array($run_price)){
+    $sub_total=$row['product_price']*$pro_qty;
+    $total+=$sub_total;
+
+   }
+  }
+  echo $total;
+ }
+// Total Price Caliculate the Add To Cart End
 
 // Items Counts Start
  function item(){

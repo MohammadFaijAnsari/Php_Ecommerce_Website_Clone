@@ -27,7 +27,7 @@
              <a href="#" class="btn btn-success btn-sm">
                 Welcome Guest
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items:<?php item();?></a>
+             <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items:<?php item();?></a>
           </div>
           <div class="col-md-6">
             <ul class="menu">
@@ -147,7 +147,7 @@
                          <table class="table">
                            <thead>
                              <tr>
-                               <th colspan="2">Product</th>
+                               <th colspan="2">Product</th> 
                                <th>Quantity</th>
                                <th>Unit Price</th>
                                <th>Size</th>
@@ -155,30 +155,48 @@
                                <th >Sub Total</th>
                              </tr>
                            </thead>
-                           <tbody>
-                             <tr>
-                              <td><img src="admin_area/product_images/t-shirt.jpeg" alt=""></td>
-                              <td>T-Shirt Sparky Brand </td>
-                              <td>2</td>
-                              <td>INR 200</td>
-                              <td>Large</td>
-                              <td><input type="checkbox" name="remove[]" id=""></td>
-                              <td>INR 398</td>
-                             </tr>
-                             <tr>
-                              <td><img src="admin_area/product_images/t-shirt.jpeg" alt=""></td>
-                              <td>T-Shirt Sparky Brand</td>
-                              <td>2</td>
-                              <td>INR 200</td>
-                              <td>Large</td>
-                              <td><input type="checkbox" name="remove[]" id=""></td>
-                              <td>INR 398</td>
-                             </tr>
-                           </tbody>
+                           <?php
+                            $get_product="SELECT * FROM cart";
+                            $run_product=mysqli_query($db,$get_product);
+                            while($res=mysqli_fetch_array($run_product)){
+                              $pro_id=$res['p_id'];
+                              $pro_qty=$res['qty'];
+                              $pro_size=$res['size'];
+                              
+                              $product="SELECT * FROM product WHERE product_id='$pro_id' ";
+                              $run=mysqli_query($db,$product);
+                              while($row=mysqli_fetch_array($run)){
+                                $product_id=$row['product_id'];
+                                $product_title=$row['product_title'];
+                                $product_img1=$row['product_img1'];
+                                $product_price=$row['product_price'];
+
+                                $sub_total=$row['product_price']*$pro_qty;
+
+                                $total=0;
+                                $total+=$sub_total;
+
+                                echo "
+                                <tbody>
+                                 <tr>
+                                   <td><img src='admin_area/product_images/$product_img1' alt='Image Not FOund'></td>
+                                   <td>$product_title </td>
+                                   <td>$pro_qty</td>
+                                   <td>₹ $product_price</td>
+                                   <td>$pro_size</td>
+                                   <td><input type='checkbox' name='remove[]' id='' value='$product_id'></td>
+                                   <td>₹ $sub_total</td>
+                                 </tr>
+                                </tbody>
+                                ";
+                              }
+                            }
+                           ?>
+                           
                            <tfoot>
                              <tr>
                                <th colspan="5">Total</th>
-                               <th colspan='2'>INR 398</th>
+                               <th colspan='2'><?php echo $total;?></th>
                              </tr>
                            </tfoot>
                          </table>

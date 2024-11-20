@@ -26,24 +26,20 @@
 </head>
 <body>
     <!-- Top Bar Start -->
-    <div id="top">
+    <div id='top'>
         <!-- Container Start -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 offer">
-                    <a href="#" class="btn btn-success btn-sm">
-                     Welcome Guest
-                    </a>
-                    <a href="#" id="link">Shopping Cart Total Price: INR 100 Total Item:<?php item();?></a>
-                </div>
-                <div class="col-md-6">
-                    <ul class="menu">
-                        <li><a href="customer_registration.php" id="link">Register</a></li>
-                        <li><a href="customer/my_account.php" id="link">My Account</a></li>
-                        <li><a href="card.php" id="link">Go Cart</a></li>
-                        <li><a href="login.php" id="link">Login</a></li>
-                    </ul>
-                </div>
+            <div class="col-md-6 offer">
+                <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
+                <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?>Total items:<?php item();?> </a>
+            </div>
+            <div class="col-md-6">
+                <ul class="menu">
+                    <li><a href="customer_registration.php" id="link">Register</a></li>
+                    <li><a href="customer/my_account.php" id="link">My Account</a></li>
+                    <li><a href="card.php" id="link">Go Cart</a></li>
+                    <li><a href="login.php" id="link">Login</a></li>
+                </ul>
             </div>
         </div>
         <!-- Container End -->

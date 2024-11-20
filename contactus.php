@@ -41,7 +41,7 @@
                     <a href="card.php" id="link">Go Cart</a>
                 </li>
                 <li>
-                    <a href="login.php.php" id="link">Login</a>
+                    <a href="login.php" id="link">Login</a>
                 </li>
             </ul>
           </div>
