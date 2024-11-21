@@ -246,6 +246,8 @@
     </div>
     <!-- Products End -->
 
+    <!-- Pagination Start  -->
+     
     <!-- Footer Include Start-->
         <div class="md-12">
             <?php include "include/footer.php"; ?>

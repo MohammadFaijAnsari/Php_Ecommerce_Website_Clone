@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+<style>
+
+</style>
 <body>
     <!-- Top Bar Start -->
     <div id='top'>
@@ -54,8 +57,8 @@
         <div class="container">
             <div class="navbar-header">
                 <!-- <a class="navbar-brand nome" href="index.php">
-                    <img src="images/logo.jpeg" alt="Image Not Found" srcset="" class="hidden-xs">
-                    <img src="images/small.jpeg" alt="Image Not Found" srcset="" class="visible-xs">
+                    <img src="../images/flipkart.jpeg" height='40px' width='60px' alt="Image Not Found" id='logo' name='logo' class='logo' srcset="" class="hidden-xs" >
+                    <img src="../images/small.jpeg" alt="Image Not Found" srcset="" class="visible-xs">
                 </a> -->
                 <button type="button" class="navbar-toggle" data-toggle='collapse' data-target='#navigation'>
                    <span class="sr-only">Toggle Navigation</span>

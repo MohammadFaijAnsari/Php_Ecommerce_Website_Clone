@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
     <!-- Top Bar Start -->
     <div id='top'>
@@ -171,7 +172,7 @@
                        </div>
                        <div class="text-center">
                           <button type="submit" name="submit" id="submit" class="btn btn-primary">
-                             <i class="fa fa-user-md"></i>Send Message
+                             <i class="fa fa-user-md"></i> Send Message
                           </button>
                        </div>
                     </form>
@@ -183,6 +184,23 @@
       </div>
       <?php
        include "include/footer.php";
+      ?>
+      <?php
+         if(isset($_POST['submit'])){
+            $senderName=$_POST['name'];
+            $senderEmail=$_POST['email'];
+            $senderSubject=$_POST['subject'];
+            $senderMessage=$_POST['message'];
+            $reciver="faija639@gmail.com";
+            mail($reciverMail,$senderName,$senderSubject,$senderMessage,$senderEmail);
+            // Customer Mail
+            $email=$_POST['email'];
+            $subject="Welcome To Ecommerce Website";
+            $msg="I shall get you soon Thank for sending email";
+            $from="faija639@gmail.com";
+            mail($email,$subject,$msg,$from);
+            echo "<h2 align='center'>Your Mail Send</h2>";
+         }
       ?>
 </body>
 </html>

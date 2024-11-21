@@ -69,7 +69,7 @@ function addcart(){
    $get_price="SELECT * FROM product WHERE product_id='$pro_id' ";
    $run_price=mysqli_query($db,$get_price);
    while($row=mysqli_fetch_array($run_price)){
-    $sub_total=$row['product_price']*$pro_qty;
+    $sub_total=$row['product_price']* $pro_qty;
     $total+=$sub_total;
 
    }
@@ -93,7 +93,7 @@ function addcart(){
 function getPro()
 {
   global $db;
-  $get_product = "SELECT * FROM product ORDER BY 1 ASC LIMIT 0,8";
+  $get_product = "SELECT * FROM product ORDER BY 1 ASC LIMIT 0,6";
   $run_product = mysqli_query($db, $get_product);
   while ($row_product = mysqli_fetch_array($run_product)) {
     $product_id = $row_product['product_id'];
