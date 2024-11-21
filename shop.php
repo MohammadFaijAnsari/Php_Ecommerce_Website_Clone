@@ -34,7 +34,7 @@
         <div class="container">
             <div class="col-md-6 offer">
                 <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
-                <a href="#" id="link">Shopping Cart Total Price: ₹ <?php price_count()?> Total items:<?php item();?> </a>
+                <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items:<?php item();?> </a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">

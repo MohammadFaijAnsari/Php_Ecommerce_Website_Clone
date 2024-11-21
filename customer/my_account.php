@@ -1,6 +1,6 @@
 <?php
- include("include/db.php");
- include("functions/function.php");
+ include("../include/db.php");
+ include("../functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
              <a href="#" class="btn btn-success btn-sm">
                 Welcome Guest
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2</a>
+             <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count();?> Total items <?php item();?></a>
           </div>
           <div class="col-md-6">
             <ul class="menu">

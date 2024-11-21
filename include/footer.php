@@ -69,7 +69,7 @@
                         <br>iics@gmail.com
                         <br>+91 8090835664
                     </p>   
-                    <a href="contact.php">Go To Contact Page</a>
+                    <a href="contactus.php">Go To ContactUs Page</a>
                     <hr class="col-md-3 hidden-lg">
                </div>
                <!--3 col-md-3 end  -->
