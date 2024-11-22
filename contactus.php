@@ -1,4 +1,5 @@
 <?php
+session_start();
  include("include/db.php");
  include("functions/function.php");
 ?>
@@ -26,7 +27,13 @@
        <div class="container">
           <div class="col-md-6 offer">
              <a href="#" class="btn btn-success btn-sm">
-                Welcome Guest
+             <?php
+                 if(!isset($_SESSION['c_email'])){
+                   echo "Welcome Guest";
+                 }else{
+                  echo "Welcome : ".$_SESSION['c_email'];
+                 }
+                ?>
              </a>
              <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count();?> Total items:<?php item(); ?></a>
           </div>
@@ -42,7 +49,15 @@
                     <a href="card.php" id="link">Go Cart</a>
                 </li>
                 <li>
-                    <a href="login.php" id="link">Login</a>
+                    <a href="login.php" id="link">
+                    <?php
+                      if(!isset($_SESSION['c_email'])){
+                        echo "<a href='login.php'>Login</a>";
+                      }else{
+                        echo "<a href='logout.php'>Logout</a>";
+                      }
+                     ?>
+                    </a>
                 </li>
             </ul>
           </div>
@@ -193,6 +208,7 @@
             $senderMessage=$_POST['message'];
             $reciver="faija639@gmail.com";
             mail($reciverMail,$senderName,$senderSubject,$senderMessage,$senderEmail);
+            
             // Customer Mail
             $email=$_POST['email'];
             $subject="Welcome To Ecommerce Website";

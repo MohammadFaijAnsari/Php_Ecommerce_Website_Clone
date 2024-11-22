@@ -1,4 +1,6 @@
 <?php 
+ session_start();
+ include("include/db.php");
  include("functions/function.php");
 ?>
 <!DOCTYPE html>
@@ -24,7 +26,13 @@
        <div class="container">
           <div class="col-md-6 offer">
              <a href="#" class="btn btn-success btn-sm">
-                Welcome Guest
+                <?php
+                 if(!isset($_SESSION['c_email'])){
+                   echo "Welcome Guest";
+                 }else{
+                  echo "Welcome : ".$_SESSION['c_email'];
+                 }
+                ?>
              </a>
              <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items <?php item();?></a>
           </div>
@@ -40,7 +48,14 @@
                     <a href="card.php" id="link">Go Card</a>
                 </li>
                 <li>
-                    <a href="login.php" id="link">Login</a>
+                    <!-- <a href="login.php" id="link">Login</a> -->
+                     <?php
+                      if(!isset($_SESSION['c_email'])){
+                        echo "<a href='login.php' id='link'>Login</a>";
+                      }else{
+                        echo "<a href='logout.php' id='link'>Logout</a>";
+                      }
+                     ?>
                 </li>
             </ul>
           </div>
@@ -95,7 +110,7 @@
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span >4 Item in Card</span>
+                 <span ><?php item();?> Item in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >
@@ -169,7 +184,7 @@
                           <input type="text" name="c_city" id="c_city" class="form-control" required>
                        </div>
                        <div class="form-group">
-                         <label for="">Contact Name</label>
+                         <label for="">Contact Number</label>
                           <input type="textr" name="c_number" id="c_number" class="form-control" required>
                        </div>
                        <div class="form-group">
@@ -197,3 +212,37 @@
       ?>
 </body>
 </html>
+<?php
+ if(isset($_POST['submit'])){
+   $name=$_POST['c_name'];
+   $email=$_POST['c_email'];
+   $pass=$_POST['c_password'];
+   $country=$_POST['c_country'];
+   $city=$_POST['c_city'];
+   $number=$_POST['c_number'];
+   $address=$_POST['c_address'];
+   $image=$_FILES['c_image']['name'];
+   $tmp_name=$_FILES['c_image']['tmp_name'];
+
+   $c_ip=getUserIp();
+
+   move_uploaded_file($tmp_name,"customer/customer_image/$image");
+
+   $insert_data="INSERT INTO registration(c_name,c_email,c_pass,c_country,c_city,c_number,c_address,c_image,c_ip) VALUES ('$name','$email','$pass','$country','$city','$number','$address','$image','$c_ip')";
+   $run_data=mysqli_query($db,$insert_data);
+
+   $sel_cart="SELECT * FROM cart WHERE ip_add='$c_ip' ";
+   $run_cart=mysqli_query($db,$sel_cart);
+   $check=mysqli_num_rows($run_cart);
+   echo $check;
+   if($check>0){
+      $_SESSION['c_email']=$email;
+      echo "<script>alert('You Have Registration Sucessfully')</script>";
+      echo "<script>window.open('index.php','_self')</script>"; 
+   }else{
+      $_SESSION['c_email']=$email;
+      echo "<script>alert('You Have Been Registration Sucessfully')</script>";
+      echo "<script>window.open('index.php','_self')</script>"; 
+   }
+ }
+?>

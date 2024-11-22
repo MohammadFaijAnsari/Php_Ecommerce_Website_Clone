@@ -43,8 +43,8 @@ function addcart(){
     if(mysqli_num_rows($run_product)>0){
       echo "
         <script>alert('This Product Is Already Added');</script>
-       ";
-      header("Location:/details.php");
+      header('Location:/details.php');
+      ";
     }else{
       $query="INSERT INTO cart(p_id,ip_add,qty,size) VALUES('$p_id','$ip_address','$product_qty','$product_size')";
       $run=mysqli_query($db,$query);

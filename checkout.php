@@ -1,8 +1,7 @@
-<?php
-session_start();
- include("../include/db.php");
- include("../functions/function.php");
- 
+<?php 
+ session_start();
+ include("include/db.php");
+ include("functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +19,6 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<style>
-
-</style>
 <body>
     <!-- Top Bar Start -->
     <div id='top'>
@@ -30,7 +26,7 @@ session_start();
        <div class="container">
           <div class="col-md-6 offer">
              <a href="#" class="btn btn-success btn-sm">
-             <?php
+                <?php
                  if(!isset($_SESSION['c_email'])){
                    echo "Welcome Guest";
                  }else{
@@ -38,29 +34,28 @@ session_start();
                  }
                 ?>
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count();?> Total items <?php item();?></a>
+             <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items <?php item();?></a>
           </div>
           <div class="col-md-6">
             <ul class="menu">
                 <li>
-                    <a href="../customer_registration.php" id="link">Registator</a>
+                    <a href="customer_registation.php" id="link">Registator</a>
                 </li>
                 <li>
                     <a href="customer/my_account.php" id="link">MyAccount</a>
                 </li>
                 <li>
-                    <a href="../card.php" id="link">Go Cart</a>
+                    <a href="card.php" id="link">Go Card</a>
                 </li>
                 <li>
-                    <a href="../login.php" id="link">
+                    <!-- <a href="login.php" id="link">Login</a> -->
                      <?php
                       if(!isset($_SESSION['c_email'])){
                         echo "<a href='login.php' id='link'>Login</a>";
                       }else{
-                        echo "<a href='../logout.php' id='link'>Logout</a>";
+                        echo "<a href='logout.php' id='link'>Logout</a>";
                       }
                      ?>
-                    </a>
                 </li>
             </ul>
           </div>
@@ -72,10 +67,6 @@ session_start();
      <div class="navbar navbar-default" id='navbar'>
         <div class="container">
             <div class="navbar-header">
-                <!-- <a class="navbar-brand nome" href="index.php">
-                    <img src="../images/flipkart.jpeg" height='40px' width='60px' alt="Image Not Found" id='logo' name='logo' class='logo' srcset="" class="hidden-xs" >
-                    <img src="../images/small.jpeg" alt="Image Not Found" srcset="" class="visible-xs">
-                </a> -->
                 <button type="button" class="navbar-toggle" data-toggle='collapse' data-target='#navigation'>
                    <span class="sr-only">Toggle Navigation</span>
                    <i class="fa fa-align-justify"></i>
@@ -90,26 +81,26 @@ session_start();
                 <!-- Padding Nav Start -->
                 <div class="padding-nav">
                    <ul class="nav navbar-nav navbar-left">
-                      <li >
-                        <a href="../index.php" >Home</a>
-                      </li>
-                      <li >
-                        <a href="../shop.php">Shop</a>
-                      </li>
                       <li class="active">
+                        <a href="index.php" >Home</a>
+                      </li>
+                      <li >
+                        <a href="shop.php">Shop</a>
+                      </li>
+                      <li >
                         <a href="customer/my_account.php" >MyAccount</a>
                       </li>
                       <li >
-                        <a href="../card.php" >Shopping Cart</a>
+                        <a href="card.php" >Shopping Cart</a>
                       </li>
                       <li >
-                        <a href="../about.php" >AboutUs</a>
+                        <a href="about.php" >AboutUs</a>
                       </li>
                       <li >
-                        <a href="../services.php" >Services</a>
+                        <a href="services.php" >Services</a>
                       </li>
                       <li >
-                        <a href="../contactus.php" >ContactUs</a>
+                        <a href="contactus.php" >ContactUs</a>
                       </li>
 
                    </ul>
@@ -119,7 +110,7 @@ session_start();
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span >4 Item in Card</span>
+                 <span ><?php item();?> Item in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >
@@ -145,68 +136,41 @@ session_start();
         </div>
     </div>
      <!-- End Navbar -->
+      <!-- Start Content -->
       <div id='content'>
 
          <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
                    <li><a href="home.php">Home</a></li>
-                   <li>My Account</li>
+                   <li>Checkout</li>
                 </ul>
             </div>
-            <!-- Include Sidebar Start-->
+            <!-- Sidebar Include Start -->
             <div class="col-md-3">
                 <?php
                  include "include/sidebar.php";
                 ?>
             </div>
-            <!-- Include Sidebar End -->
-             <!-- col-md-9 start -->
-               <div class="col-md-9">
-                  <?php
-                  // Including my_order page start
-                  if(isset($_GET['my_order'])){
-                     include("my_order.php");
-                  }
-                  // Including my_order page end
-                  ?>
-                  
-                  <?php
-                  // Including pay_offline start
-                  if(isset($_GET['pay_offline'])){
-                     include("pay_offline.php");
-                  }
-                  // Includeing pay_offline end
-                  ?>
-                  <?php
-                  // Including Edit Account Page start
-                   if(isset($_GET['edit_account'])){
-                     include("edit_account.php");
-                   }
-                  // Including Edit Account Page End
-                  ?>
-
-                  <?php
-                  // Including the Change Password Page Start
-                   if(isset($_GET['change_pass'])){
-                     include("change_pass.php");
-                   }
-                  // Including the Change Password Page End
-                  ?>
-                  
-                  <?php
-                  // Includeing the Delete Account Page Start
-                   if(isset($_GET['delete_account'])){
-                     include("delete_account.php");
-                   }
-                  // Includeing the Delete Account Page End
-                  ?>
-               </div>
-             <!-- col-md-9 end -->
+            <!-- Sidebar Include End -->
+            <!-- col-md-9 start -->
+              <div class="col-md-9">
+                <?php
+                 if(!isset($_SESSION['c_email'])){
+                    include("customer/customer_login.php");
+                 }else{
+                    include("payment_option.php");
+                 }
+                ?>
+              </div>
+            <!--  col-md-9 end-->
          </div>
       </div>
+      <!-- End Content -->
+      <!-- Footer Include Start -->
       <?php
-      include "include/footer.php";
+       include("include/footer.php");
       ?>
+      <!-- Footer Include End -->
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
  include("include/db.php");
  include("functions/function.php");
+ session_start();
  error_reporting(false);
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,13 @@
        <div class="container">
           <div class="col-md-6 offer">
              <a href="#" class="btn btn-success btn-sm">
-                Welcome Guest
+             <?php
+                 if(!isset($_SESSION['c_email'])){
+                   echo "Welcome Guest";
+                 }else{
+                  echo "Welcome : ".$_SESSION['c_email'];
+                 }
+                ?>
              </a>
              <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items:<?php item();?></a>
           </div>
@@ -42,7 +49,15 @@
                     <a href="card.php" id="link">Go Cart</a>
                 </li>
                 <li>
-                    <a href="login.php" id="link">Login</a>
+                    <a href="login.php" id="link">
+                    <?php
+                      if(!isset($_SESSION['c_email'])){
+                        echo "<a href='login.php'>Login</a>";
+                      }else{
+                        echo "<a href='logout.php'>Logout</a>";
+                      }
+                     ?>
+                    </a>
                 </li>
             </ul>
           </div>

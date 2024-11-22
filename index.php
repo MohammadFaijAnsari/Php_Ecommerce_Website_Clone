@@ -1,4 +1,5 @@
 <?php
+session_start();
  include("include/db.php");
  include("functions/function.php");
 ?>
@@ -30,7 +31,15 @@
         <!-- Container Start -->
         <div class="container">
             <div class="col-md-6 offer">
-                <a href="#" class="btn btn-success btn-sm">Welcome Guest</a>
+                <a href="#" class="btn btn-success btn-sm">
+                <?php
+                 if(!isset($_SESSION['c_email'])){
+                   echo "Welcome Guest";
+                 }else{
+                  echo "Welcome : ".$_SESSION['c_email'];
+                 }
+                ?>
+                </a>
                 <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items:<?php item();?> </a>
             </div>
             <div class="col-md-6">
@@ -38,7 +47,16 @@
                     <li><a href="customer_registration.php" id="link">Register</a></li>
                     <li><a href="customer/my_account.php" id="link">My Account</a></li>
                     <li><a href="card.php" id="link">Go Cart</a></li>
-                    <li><a href="login.php" id="link">Login</a></li>
+                    <li><a href="login.php" id="link">
+                    <?php
+                      if(!isset($_SESSION['c_email'])){
+                        echo "<a href='login.php' id='link'>Login</a>";
+                      }else{
+                        echo "<a href='logout.php' id='link'>Logout</a>";
+                      }
+                     ?>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
