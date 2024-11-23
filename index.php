@@ -45,12 +45,20 @@ session_start();
             <div class="col-md-6">
                 <ul class="menu">
                     <li><a href="customer_registration.php" id="link">Register</a></li>
-                    <li><a href="customer/my_account.php" id="link">My Account</a></li>
+                    <li>
+                        <?php
+                         if(!isset($_SESSION['c_email'])){
+                            echo "<a href='checkout.php' id='hide' name='hide'>MyAccount</a>";
+                         }else{
+                            echo "<a href='customer/my_account.php?my_order' id='hide' name='hide'>MyAccount</a>";
+                         }
+                        ?>
+                    </li>
                     <li><a href="card.php" id="link">Go Cart</a></li>
                     <li><a href="login.php" id="link">
                     <?php
                       if(!isset($_SESSION['c_email'])){
-                        echo "<a href='login.php' id='link'>Login</a>";
+                        echo "<a href='checkout.php' id='link'>Login</a>";
                       }else{
                         echo "<a href='logout.php' id='link'>Logout</a>";
                       }
@@ -84,7 +92,15 @@ session_start();
                     <ul class="nav navbar-nav navbar-left">
                         <li class="active"><a href="index.php">Home</a></li>
                         <li><a href="shop.php">Shop</a></li>
-                        <li><a href="customer/my_account.php">My Account</a></li>
+                        <li>
+                        <?php
+                         if(!isset($_SESSION['c_email'])){
+                            echo "<a href='checkout.php' id='hide' name='hide'>MyAccount</a>";
+                         }else{
+                            echo "<a href='customer/my_account.php?my_order' id='hide' name='hide'>MyAccount</a>";
+                         }
+                        ?>
+                        </li>
                         <li><a href="card.php">Shopping Cart</a></li>
                         <li><a href="about.php">About Us</a></li>
                         <li><a href="services.php">Services</a></li>

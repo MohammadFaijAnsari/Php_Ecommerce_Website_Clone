@@ -110,7 +110,7 @@
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span ><?php item();?> Item in Card</span>
+                 <span ><?php item();?> Items in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >
@@ -141,8 +141,16 @@
          <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                   <li><a href="home.php">Home</a></li>
-                   <li>Registation</li>
+                   <li><a href="index.php" id='hide' name='hide'>Home</a></li>
+                   <li>
+                   <?php
+                     if(!isset($_SESSION['c_email'])){
+                      echo "<a href='checkout.php' id='hide' name='hide'>MyAccount</a>";
+                     }else{
+                      echo "<a href='customer/my_account.php?my_order' id='hide' name='hide'>MyAccount</a>";
+                     }
+                    ?>
+                   </li>
                 </ul>
             </div>
             <!-- Sidebar Include Start -->

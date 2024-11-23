@@ -42,9 +42,10 @@ function addcart(){
     $run_product=mysqli_query($db,$check_product);
     if(mysqli_num_rows($run_product)>0){
       echo "
-        <script>alert('This Product Is Already Added');</script>
-      header('Location:/details.php');
-      ";
+           <script>alert('This Product Is Already Added');</script>
+          ";
+      echo "<script>window.open('./card.php','_self')</script>";
+      // header("Location:./details.php");
     }else{
       $query="INSERT INTO cart(p_id,ip_add,qty,size) VALUES('$p_id','$ip_address','$product_qty','$product_size')";
       $run=mysqli_query($db,$query);
@@ -93,7 +94,7 @@ function addcart(){
 function getPro()
 {
   global $db;
-  $get_product = "SELECT * FROM product ORDER BY 1 ASC LIMIT 0,6";
+  $get_product = "SELECT * FROM product ORDER BY 1 ASC LIMIT 0,8";
   $run_product = mysqli_query($db, $get_product);
   while ($row_product = mysqli_fetch_array($run_product)) {
     $product_id = $row_product['product_id'];

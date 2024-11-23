@@ -53,7 +53,7 @@ session_start();
                     <li><a href="login.php" id="link">
                      <?php
                        if(!isset($_SESSION['c_email'])){
-                         echo "<a href='login.php' id='link'>Login</a>";
+                         echo "<a href='checkout.php' id='link'>Login</a>";
                        }else{
                          echo "<a href='logout.php' id='link'>Logout</a>";
                        }
@@ -127,8 +127,16 @@ session_start();
         <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li><a href="home.php">Home</a></li>
-                    <li>Shop</li>
+                    <li><a href="index.php" id='hide' name='hide'>Home</a></li>
+                    <li>
+                    <?php
+                     if(!isset($_SESSION['c_email'])){
+                      echo "<a href='checkout.php' id='hide' name='hide'>MyAccount</a>";
+                     }else{
+                      echo "<a href='customer/my_account.php?my_order' id='hide' name='hide'>MyAccount</a>";
+                     }
+                    ?>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3">

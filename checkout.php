@@ -39,7 +39,7 @@
           <div class="col-md-6">
             <ul class="menu">
                 <li>
-                    <a href="customer_registation.php" id="link">Registator</a>
+                    <a href="./customer_registration.php" id="link">Registator</a>
                 </li>
                 <li>
                     <a href="customer/my_account.php" id="link">MyAccount</a>
@@ -142,8 +142,16 @@
          <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                   <li><a href="home.php">Home</a></li>
-                   <li>Checkout</li>
+                   <li><a href="index.php" id='hide' name='hide'>Home</a></li>
+                   <li>
+                   <?php
+                     if(!isset($_SESSION['c_email'])){
+                      echo "<a href='checkout.php' id='hide' name='hide'>MyAccount</a>";
+                     }else{
+                      echo "<a href='customer/my_account.php?my_order' id='hide' name='hide'>MyAccount</a>";
+                     }
+                    ?>
+                   </li>
                 </ul>
             </div>
             <!-- Sidebar Include Start -->
