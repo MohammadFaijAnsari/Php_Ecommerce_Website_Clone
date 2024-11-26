@@ -1,5 +1,8 @@
 <?php
-session_start();
+ session_start();
+ if(!isset($_SESSION['c_email'])){
+  echo "<script>window.open('../checkout.php','_self')</script>";
+ }else{
  include("../include/db.php");
  include("../functions/function.php");
  
@@ -218,3 +221,6 @@ session_start();
       ?>
 </body>
 </html>
+<?php
+}
+?>

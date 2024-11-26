@@ -9,11 +9,24 @@
     <!-- Slide Panel Start -->
     <div class="panel panel-default sidebar-menu">
         <div class="panel-heading">
-            <center>
-              <img src="images/images.jpeg" class='img-responsive' alt="Image Not Found" srcset="">
-            </center>
-            <br>
-            <h3 class="text-center panel-title">Name:Bittu</h3>
+            <?php
+             $session_active = $_SESSION['c_email']; 
+             $get_cus = "SELECT * FROM registration WHERE c_email = '$session_active'";
+             $run_cus = mysqli_query($db, $get_cus);
+             if ($run_cus) {
+                 $row_cus = mysqli_fetch_array($run_cus);
+                 $cus_img = $row_cus['c_image'];
+                 $cus_name = $row_cus['c_name'];
+                 echo "
+                 <center>
+                     <img src='customer_image/$cus_img' class='img-responsive' alt='Image Not Found'>
+                 </center>
+                 <br>
+                 <h3 class='text-center panel-title'>Name:$cus_name</h3>";
+             } 
+             
+            ?>
+            
         </div>
   
       <!-- Slide Panel End -->
@@ -50,7 +63,7 @@
         </li>
 
         <li class="<?php if(isset($_GET['logout'])) { echo 'active'; } ?>"> 
-            <a href="my_account.php?logout">
+            <a href="../logout.php">
              <i class="fa fa-sign-out"></i>
              Logout</a>
         </li>

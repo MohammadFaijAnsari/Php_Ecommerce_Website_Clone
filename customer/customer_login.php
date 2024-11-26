@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <div class='box'>
@@ -57,7 +58,7 @@
     if($check_cus==1 && $check_cart==0){
       $_SESSION['c_email']=$email;
       echo "<script>alert('Login Sucessfully');</script>";
-      echo "<script>window.open('customer/my_account.php');</script>";
+      echo "<script>window.open('customer/my_account.php','_self');</script>";
     }else{
       $_SESSION['c_email']=$email;
       echo "<script>alert('Login Sucessfully');</script>";

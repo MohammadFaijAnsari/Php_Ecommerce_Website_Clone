@@ -1,6 +1,8 @@
 <?php
+ session_start();
+ error_reporting(false);
  include("include/db.php");
- include("functions/function.php");
+ include("../functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +27,15 @@
        <div class="container">
           <div class="col-md-6 offer">
              <a href="#" class="btn btn-success btn-sm">
-                Welcome Guest
+             <?php
+                 if(!isset($_SESSION['c_email'])){
+                   echo "Welcome Guest";
+                 }else{
+                  echo "Welcome : ".$_SESSION['c_email'];
+                 }
+                ?>
              </a>
-             <a href="#" id="link">Shopping Cart Total Price:INR 100 Total items 2</a>
+             <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count();?> Total items <?php item();?></a>
           </div>
           <div class="col-md-6">
             <ul class="menu">
@@ -41,7 +49,15 @@
                     <a href="../card.php" id="link">Go Cart</a>
                 </li>
                 <li>
-                    <a href="../login.php" id="link">Login</a>
+                    
+                      <?php
+                       if(!isset($_SESSION['c_email'])){
+                         echo "<a href='../login.php' id='hide' name='hide'>Login</a>";
+                       }else{
+                        echo "<a href='../logout.php' id='hide' name='hide'>Logout</a>";
+                       }
+                      ?>
+                    </a>
                 </li>
             </ul>
           </div>
@@ -72,7 +88,7 @@
                 <div class="padding-nav">
                    <ul class="nav navbar-nav navbar-left">
                       <li >
-                        <a href="../index.php" >Home</a>
+                        <a href="../index.php" id='hide' name='hide'>Home</a>
                       </li>
                       <li >
                         <a href="../shop.php">Shop</a>
@@ -100,7 +116,7 @@
               <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
                  <i class='fa fa-shopping-cart'></i>
                  <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-                 <span >4 Item in Card</span>
+                 <span ><?php item();?> Item in Card</span>
               </a>
               <div class="navbar-collapse collapse right" >
                  <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search" >
@@ -131,8 +147,8 @@
          <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                   <li><a href="home.php">Home</a></li>
-                   <li>My Account</li>
+                   <li><a href="../index.php" id="hide" name="hide">Home</a></li>
+                   <li><a href="my_account.php" id='hide' name='hide'>My Account</a></li>
                 </ul>
             </div>
             <!-- Include Sidebar Start-->
@@ -192,7 +208,7 @@
       <!-- Main div end -->
        <!-- Footer Include Start -->
       <?php
-      include "include/footer.php";
+      include("../include/footer.php");
       ?>
       <!-- Footer Include End -->
 </body>

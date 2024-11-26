@@ -46,12 +46,12 @@
                 </li>
                 <li>
                     <a href="card.php" id="link">Go Card</a>
-                </li>
+                </li> 
                 <li>
                     <!-- <a href="login.php" id="link">Login</a> -->
                      <?php
                       if(!isset($_SESSION['c_email'])){
-                        echo "<a href='login.php' id='link'>Login</a>";
+                        echo "<a href='checkout.php' id='link'>Login</a>";
                       }else{
                         echo "<a href='logout.php' id='link'>Logout</a>";
                       }
@@ -167,6 +167,7 @@
                  if(!isset($_SESSION['c_email'])){
                     include("customer/customer_login.php");
                  }else{
+                  //  echo "<script>alert('Payment Option')</script>";
                     include("payment_option.php");
                  }
                 ?>
