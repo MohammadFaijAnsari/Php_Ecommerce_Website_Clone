@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 05:21 PM
+-- Generation Time: Dec 04, 2024 at 03:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -78,30 +78,29 @@ CREATE TABLE `customers_order` (
 --
 
 INSERT INTO `customers_order` (`order_id`, `customer_id`, `due_amount`, `invoice_number`, `qty`, `size`, `order_date`, `order_status`) VALUES
-(9, 53, 47998, 1746552949, 2, '0', '2024-11-26 15:43:06', 'pending');
+(17, 70, 899, 2070302015, 1, '0', '2024-12-04 07:14:26', 'Complete Payment');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pending_order`
+-- Table structure for table `payment`
 --
 
-CREATE TABLE `pending_order` (
-  `order_id` int(10) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `invoice_number` int(10) NOT NULL,
-  `product_id` text NOT NULL,
-  `qty` int(10) NOT NULL,
-  `size` text NOT NULL,
-  `order_status` text NOT NULL
+CREATE TABLE `payment` (
+  `payment_id` int(10) NOT NULL,
+  `invoice_id` int(100) NOT NULL,
+  `amount` int(100) NOT NULL,
+  `payment_mode` text NOT NULL,
+  `trans_number` int(100) NOT NULL,
+  `payment_date` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pending_order`
+-- Dumping data for table `payment`
 --
 
-INSERT INTO `pending_order` (`order_id`, `customer_id`, `invoice_number`, `product_id`, `qty`, `size`, `order_status`) VALUES
-(4, 53, 1746552949, '16', 2, '0', 'pending');
+INSERT INTO `payment` (`payment_id`, `invoice_id`, `amount`, `payment_mode`, `trans_number`, `payment_date`) VALUES
+(14, 2070302015, 899, 'Paypal', 763572, '2002-12-12');
 
 -- --------------------------------------------------------
 
@@ -170,6 +169,7 @@ CREATE TABLE `registration` (
   `c_name` varchar(255) NOT NULL,
   `c_email` varchar(255) NOT NULL,
   `c_pass` varchar(255) NOT NULL,
+  `confirm_pass` varchar(100) NOT NULL,
   `c_country` text NOT NULL,
   `c_city` text NOT NULL,
   `c_number` varchar(255) NOT NULL,
@@ -177,13 +177,6 @@ CREATE TABLE `registration` (
   `c_image` text NOT NULL,
   `c_ip` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `registration`
---
-
-INSERT INTO `registration` (`c_id`, `c_name`, `c_email`, `c_pass`, `c_country`, `c_city`, `c_number`, `c_address`, `c_image`, `c_ip`) VALUES
-(53, 'Kaif', 'kaif@gmail.com', '1234', 'India', 'Prayagraj', '+918090835664', 'Prayagraj', 'kurti1.jpeg', '::1');
 
 -- --------------------------------------------------------
 
@@ -223,10 +216,10 @@ ALTER TABLE `customers_order`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Indexes for table `pending_order`
+-- Indexes for table `payment`
 --
-ALTER TABLE `pending_order`
-  ADD PRIMARY KEY (`order_id`);
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`);
 
 --
 -- Indexes for table `product`
@@ -266,13 +259,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers_order`
 --
 ALTER TABLE `customers_order`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `pending_order`
+-- AUTO_INCREMENT for table `payment`
 --
-ALTER TABLE `pending_order`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `payment`
+  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -290,7 +283,7 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `slider`

@@ -8,7 +8,7 @@
 <body>
    <div class="box">
      <center>
-        <h1>Pay Offline Using Below Mathod</h1>
+        <h1>Pay Offline Using Below Method</h1>
         <p>If you have question.please fill to <a href="../contactus.php">Contact Us Page</a> us service center is working for 24/7</p>
      </center>
      <hr>
