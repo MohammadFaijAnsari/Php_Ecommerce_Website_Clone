@@ -15,6 +15,7 @@
              $run_cus = mysqli_query($db, $get_cus);
              if ($run_cus) {
                  $row_cus = mysqli_fetch_array($run_cus);
+                //  error_reporting(false);
                  $cus_img = $row_cus['c_image'];
                  $cus_name = $row_cus['c_name'];
                  echo "

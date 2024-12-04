@@ -242,7 +242,7 @@
    $sel_cart="SELECT * FROM cart WHERE ip_add='$c_ip' ";
    $run_cart=mysqli_query($db,$sel_cart);
    $check=mysqli_num_rows($run_cart);
-   echo $check;
+  //  echo $check;
    if($check>0){
       $_SESSION['c_email']=$email;
       echo "<script>alert('You Have Registration Sucessfully')</script>";

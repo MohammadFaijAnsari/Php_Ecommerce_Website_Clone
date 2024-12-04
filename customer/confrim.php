@@ -1,8 +1,12 @@
 <?php
  session_start();
- error_reporting(false);
- include("include/db.php");
+//  error_reporting(false);
+ include("./include/db.php");
  include("../functions/function.php");
+  if(isset($_GET['order_id'])){
+    $order_id=$_GET['order_id'];
+    // echo $order_id;
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +166,8 @@
                <div class="col-md-9">
                  <div class="box">
                     <h1 class="text-center">Please confrim your payment</h1>
-                    <form action="#" method="post">
+                    <!-- Form Start -->
+                    <form action="confrim.php?update_id=<?php echo $order_id;?>" method="post">
                         <div class="form-group">
                             <label for="">Invoice No</label>
                              <input type="text" class='form-control' name="invoice_number" id="invoice_number" required>
@@ -174,32 +179,56 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Transection Number</label>
-                             <input type="text" class='form-control' name="tr_fr" id="tr_fr" required>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="">Select payment Method</label>
-                             <select name="paytm" id="patm" class="form-control">
-                                <option value="">Bank Transfer</option>
-                                <option value="">Paypal</option>
-                                <option value="">Paytm</option>
-                                <option value="">PhonePay</option>
+                            <label for="">Payment Method</label>
+                             <select name="payment" id="payment" class="form-control">
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Paypal">Paypal</option>
+                                <option value="Payt">Paytm</option>
+                                <option value="PhonePay">PhonePay</option>
                              </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Date</label>
+                            <label for="">Transection Number</label>
+                             <input type="text" class='form-control' name="tr_no" id="tr_no" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Transection Date</label>
                              <input type="date" class='form-control' name="date" id="date" required>
                         </div>
 
                         <div class="text-center">
-                           <button type="submit" name="confrim_payment" class="btn btn-primary btn-lg">
+                           <button type="submit" name="confrim_payment" id='confrim_payment' class="btn btn-primary btn-lg">
                               Confrom Payment
                            </button>
                         </div>
                     </form>
+                    <!-- Form End -->
+                     <?php
+                      if(isset($_POST['confrim_payment'])){
+                        $update_id=$_GET['update_id'];
+                        // echo $update_id;
+                        // die;
+                        $invoice_number=$_POST['invoice_number'];
+                        $amount=$_POST['amount'];
+                        $payment_method=$_POST['payment'];
+                        $trans_nu=$_POST['tr_no'];
+                        $date=$_POST['date'];
+                        $complete="Complete Payment";
+
+                        $insert="INSERT INTO payment(invoice_id,amount,payment_mode,trans_number,payment_date) VALUES('$invoice_number','$amount','$payment_method','$trans_nu','$date')";
+                        $run=mysqli_query($db,$insert);
+                        
+                        $update_customer_order="UPDATE customers_order SET order_status='$complete' WHERE order_id='$update_id' ";
+                        $run=mysqli_query($db,$update_customer_order);
+
+                        // $update_pending_order="UPDATE pending_order SET order_status='$complete' WHERE order_id='$update_id' ";
+                        // $run=mysqli_query($db,$update_pending_order);
+                        echo "<script>alert('Payment Has Been Sucessfully');</script>";
+
+                      }
+                     ?>
                  </div>
                </div>
               <!-- col-md-9 end -->

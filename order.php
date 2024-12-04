@@ -29,8 +29,8 @@
      $run_c_order=mysqli_query($db,$insert_customer_order);
     //  print_r($run_c_order);
 
-     $insert_pending_order="INSERT INTO pending_order(customer_id,invoice_number,product_id,qty,size,  order_status)   VALUES ('$customer_id','$invoice_no','$product_id','$qty','$size','$status')";
-     $run_pending_order=mysqli_query($db,$insert_pending_order);
+    //  $insert_pending_order="INSERT INTO pending_order(customer_id,invoice_number,product_id,qty,size,  order_status)   VALUES ('$customer_id','$invoice_no','$product_id','$qty','$size','$status')";
+    //  $run_pending_order=mysqli_query($db,$insert_pending_order);
 
      $delete_cart="DELETE FROM cart WHERE ip_add='$ip_address' ";
      $run_cart=mysqli_query($db,$delete_cart);

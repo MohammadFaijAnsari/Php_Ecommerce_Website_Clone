@@ -1,4 +1,6 @@
-<?php include("db.php");?>
+<?php 
+  include("db.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,16 +20,16 @@
               <div class="col-md-3 col-sm-6">
                  <h4>Pages</h4>
                  <ul>
-                    <li><a href="card.php">Shopping Cart</a></li>
-                    <li><a href="contactus.php">Contact</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="chechout.php">My Account</a></li>
+                    <li><a href="card.php" id="hide" name='hide'>Shopping Cart</a></li>
+                    <li><a href="contactus.php" id="hide" name='hide'>Contact</a></li>
+                    <li><a href="shop.php" id="hide" name='hide'>Shop</a></li>
+                    <li><a href="chechout.php" id="hide" name='hide'>My Account</a></li>
                  </ul>
                  <hr>
                  <h4>Users Section</h4>
                  <ul>
-                    <li><a href="checkout.php">Login</a></li>
-                    <li><a href="customer_registration.php">Register</a></li>
+                    <li><a href="checkout.php" id="hide" name='hide'>Login</a></li>
+                    <li><a href="customer_registration.php" id="hide" name='hide'>Register</a></li>
                     <li></li>
                  </ul>
                  <hr class="hidden-md hidden-lg hidden-sm">
@@ -44,7 +46,7 @@
                          $p_cat_id=$row['p_cat_Id'];
                          $p_cat_title=$row['p_cat_title'];
                          echo "
-                           <li><a href='shop.php?p_cat_id=$p_cat_id'>$p_cat_title</a></li>
+                           <li><a href='shop.php?p_cat_id=$p_cat_id' id='hide' name='hide'>$p_cat_title</a></li>
                          ";
                      }
                     ?>
@@ -69,7 +71,7 @@
                         <br>iics@gmail.com
                         <br>+91 8090835664
                     </p>   
-                    <a href="contactus.php">Go To ContactUs Page</a>
+                    <a href="contactus.php" id="hide" name='hide'>Go To ContactUs Page</a>
                     <hr class="col-md-3 hidden-lg">
                </div>
                <!--3 col-md-3 end  -->
@@ -89,12 +91,12 @@
                   <hr>
                   <h4>Stay In Touch</h4>
                   <p class="social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-google-plus"></i></a>
-        <a href="#"><i class="fa fa-envelope"></i></a>
-    </p>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                  </p>
                <!--4 col-md-3 end  -->
            </div>
         </div>

@@ -67,7 +67,7 @@
                 <td><?php echo $order_size?></td>
                 <td><?php echo $order_date?></td>
                 <td><?php echo $order_status?></td>
-                <td><a href="confrim.php" target="_self" class="btn btn-success btn-sm">Confrim Paid</a></td>
+                <td><a href="confrim.php?order_id=<?php echo $order_id ?>" target="_self" class="btn btn-success btn-sm">Confrim Paid</a></td>
             </tr>
             <?php 
                  }
