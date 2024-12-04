@@ -184,6 +184,10 @@
                           <input type="password" name="c_password" id="c_password" class="form-control" required>
                        </div>
                        <div class="form-group">
+                         <label for="">Customer Confirm Password</label>
+                          <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                       </div>
+                       <div class="form-group">
                          <label for="">Country</label>
                           <input type="text" name="c_country" id="c_contry" class="form-control" required>
                        </div>
@@ -225,6 +229,7 @@
    $name=$_POST['c_name'];
    $email=$_POST['c_email'];
    $pass=$_POST['c_password'];
+   $confirm_pass=$_POST['confirm_password'];
    $country=$_POST['c_country'];
    $city=$_POST['c_city'];
    $number=$_POST['c_number'];
@@ -236,9 +241,10 @@
 
    move_uploaded_file($tmp_name,"customer/customer_image/$image");
 
-   $insert_data="INSERT INTO registration(c_name,c_email,c_pass,c_country,c_city,c_number,c_address,c_image,c_ip) VALUES ('$name','$email','$pass','$country','$city','$number','$address','$image','$c_ip')";
+  
+   $insert_data="INSERT INTO registration(c_name,c_email,c_pass,confirm_pass,c_country,c_city,c_number,c_address,c_image,c_ip) VALUES ('$name','$email','$pass','$confirm_pass','$country','$city','$number','$address','$image','$c_ip')";
    $run_data=mysqli_query($db,$insert_data);
-
+  
    $sel_cart="SELECT * FROM cart WHERE ip_add='$c_ip' ";
    $run_cart=mysqli_query($db,$sel_cart);
    $check=mysqli_num_rows($run_cart);

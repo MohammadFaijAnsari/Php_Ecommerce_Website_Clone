@@ -15,12 +15,12 @@
              $run_cus = mysqli_query($db, $get_cus);
              if ($run_cus) {
                  $row_cus = mysqli_fetch_array($run_cus);
-                //  error_reporting(false);
+                 error_reporting(false);
                  $cus_img = $row_cus['c_image'];
                  $cus_name = $row_cus['c_name'];
                  echo "
                  <center>
-                     <img src='customer_image/$cus_img' class='img-responsive' alt='Image Not Found'>
+                     <img src='../customer/customer_image/$cus_img' class='img-responsive' alt='Image Not Found'>
                  </center>
                  <br>
                  <h3 class='text-center panel-title'>Name:$cus_name</h3>";

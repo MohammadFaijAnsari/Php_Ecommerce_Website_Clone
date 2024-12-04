@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,7 @@
         <center>
             <h3>Change Password</h3>
         </center>
-        <div class="form-group">
-          <label for="">Enter the Currect Password</label>
-           <input type="password" name="old_password" id="old_password" class="form-control">
-        </div>
+      <form action="#" method="post">
         <div class="form-group">
           <label for="">Enter the New Password</label>
           <input type="password" name="new_password" id="new_password" class="form-control">
@@ -23,10 +21,28 @@
           <input type="password" name="c_new_password" id="c_new_password" class="form-control">
         </div> 
         <div class="text-center ">
-           <button class="btn btn-primary" name='button'>
+           <button class="btn btn-primary" id='change_pass' name='change_pass'>
             Update Button
            </button>
         </div>
+      </form>
     </div>
 </body>
 </html>
+<?php
+ if(isset($_POST['change_pass'])){
+    $email=$_SESSION['c_email'];
+    // echo $email;
+    $new_password=$_POST['new_password'];
+    // echo $new_password;
+    $c_new_password=$_POST['c_new_password'];
+    
+    $update_password="UPDATE registration SET c_pass='$new_password',confirm_pass='$c_new_password' WHERE c_email='$email' ";
+    $run_password=mysqli_query($con,$update_password);
+    if($run_password){
+      echo "<script>alert('Password Has Been Updated')</script>";
+      echo "<script>alert('window.open('my_account.php','_self')')</script>";
+      
+    }
+ }
+?>
