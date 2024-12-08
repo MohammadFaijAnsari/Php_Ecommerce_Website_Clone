@@ -1,7 +1,7 @@
 
 <style>
   #image{
-    width: 260px;
+    width: 328px;
     height: 200px;
   }
   #hide {
@@ -104,7 +104,7 @@ function getPro()
 
     echo "
         <div class='col-md-3 col-sm-6 center-responsive'>
-          <div class='product '>
+          <div class='product'>
             <a href='details.php?product_id=$product_id'>
               <img src='admin_area/product_images/$product_img1' class='img-responsive' id='image' name='image'/>
             </a>

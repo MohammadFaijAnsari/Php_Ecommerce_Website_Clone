@@ -45,36 +45,6 @@
         </div>
 
         <div class="form-group">
-           <label for="">Customer Password</label>
-           <input type="text" name="c_pass" id="c_pass" value='<?php echo $customer_password;?>' class="form-control" required>
-        </div>
-
-        <div class="form-group">
-           <label for="">Customer Confirm Password</label>
-           <input type="text" name="confirm_pass" id="confirm_pass" value='<?php echo $c_customer_password;?>' class="form-control" required>
-        </div>
-
-        <div class="form-group">
-           <label for="">Country</label>
-           <input type="text" name="c_country" id="c_country" value='<?php echo $customer_country;?>' class="form-control" required>
-        </div>
-
-        <div class="form-group">
-           <label for="">City</label>
-           <input type="text" name="c_city" id="c_city" class="form-control" value='<?php echo $customer_city;?>' required>
-        </div>
-
-        <div class="form-group">
-           <label for="">Contact Number</label>
-           <input type="text" name="c_number" id="c_number" value='<?php echo $customer_number;?>' class="form-control" required>
-        </div>
-
-        <div class="form-group">
-           <label for="">Address</label>
-           <input type="text" name="c_address" id="c_address" value='<?php echo $customer_address;?>' class="form-control" required>
-        </div>
-
-        <div class="form-group">
            <label for="">Image</label>
            <input type="file" name="c_image" id="c_image" class="form-control" >
             <img src="customer_image/<?php echo $customer_images;?>" alt="" class="img-responsive" height="100px" width="100px">
@@ -97,12 +67,6 @@
    $update_id=$customer_id;
    $c_name=$_POST['c_name'];
    $c_email=$_POST['c_email'];
-   $c_pass=$_POST['c_pass'];
-   $c_confirm_pass=$_POST['confirm_pass'];
-   $c_country=$_POST['c_country'];
-   $c_city=$_POST['c_city'];
-   $c_number=$_POST['c_number'];
-   $c_address=$_POST['c_address'];
    $c_image=$_FILES['c_image']['name'];
    $c_tmp=$_FILES['c_image']['tmp_name'];
 
@@ -111,12 +75,6 @@
    $update_customer="UPDATE registration SET 
                  c_name='$c_name',
                  c_email='$c_email',
-                 c_pass='$c_pass',
-                 confirm_pass='$c_confirm_pass',
-                 c_country='$c_country',
-                 c_city='$c_city',
-                 c_number='$c_number',
-                 c_address='$c_address',
                  c_image='$c_image' WHERE c_id='$update_id' ";
    $run_customer=mysqli_query($con,$update_customer);
    if($run_customer){

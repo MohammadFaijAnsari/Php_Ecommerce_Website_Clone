@@ -1,128 +1,15 @@
 <?php
-//  include("include/db.php");
-session_start();
- include("functions/function.php");
+ include("common_index.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website</title>
-    <!-- Link Style Folder -->
-    <link rel="stylesheet" href="style/style.css">
-    <!-- CSS CDN Link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+<style>
     #images{
-      width: 260px;
+      width: 328px;
       height: 200px;
-  }
-
-  #hide {
-    text-decoration: none;
-  }
-    </style>
-</head>
-<body>
-    <!-- Top Bar Start -->
-    <div id='top'>
-        <!-- Container Start -->
-        <div class="container">
-            <div class="col-md-6 offer">
-                <a href="#" class="btn btn-success btn-sm">
-                <?php
-                 if(!isset($_SESSION['c_email'])){
-                   echo "Welcome Guest";
-                 }else{
-                  echo "Welcome : ".$_SESSION['c_email'];
-                 }
-                ?>
-                </a>
-                <a href="#" id="link">Shopping Cart Total Price:₹ <?php price_count()?> Total items:<?php item();?> </a>
-            </div>
-            <div class="col-md-6">
-                <ul class="menu">
-                    <li><a href="customer_registration.php" id="link">Register</a></li>
-                    <li><a href="customer/my_account.php" id="link">My Account</a></li>
-                    <li><a href="card.php" id="link">Go Cart</a></li>
-                    <li><a href="login.php" id="link">
-                     <?php
-                       if(!isset($_SESSION['c_email'])){
-                         echo "<a href='checkout.php' id='link'>Login</a>";
-                       }else{
-                         echo "<a href='logout.php' id='link'>Logout</a>";
-                       }
-                      ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Container End -->
-    </div>
-    <!-- Top Bar End -->
-
-    <!-- Start Navbar -->
-    <div class="navbar navbar-default" id='navbar'>
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle='collapse' data-target='#navigation'>
-                    <span class="sr-only">Toggle Navigation</span>
-                    <i class="fa fa-align-justify"></i>
-                </button>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle Search</span>
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-
-            <div class="navbar-collapse collapse" id='navigation'>
-                <!-- Padding Nav Start -->
-                <div class="padding-nav">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href="index.php">Home</a></li>
-                        <li class="active"><a href="shop.php">Shop</a></li>
-                        <li><a href="customer/my_account.php">My Account</a></li>
-                        <li><a href="card.php">Shopping Cart</a></li>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="services.php">Services</a></li>
-                        <li><a href="contactus.php">Contact Us</a></li>
-                    </ul>
-                </div>
-                <!-- Padding Nav End -->
-
-                <a href="card.php" class="btn btn-primary navbar-btn right" id="click">
-                    <i class='fa fa-shopping-cart'></i>
-                    <span><?php item();?> Items in Cart</span>
-                </a>
-                <div class="navbar-collapse collapse right">
-                    <button type='button' class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
-                        <span class="sr-only">Toggle Search</span>
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-                <div class="collapse clearfix" id="search">
-                    <form class="navbar-form" method="get" action="result.php">
-                        <div class="input-group">
-                            <input type="text" name="user_query" id="user_query" placeholder="Search" class="form-control" required>
-                            <span class="input-group-btn">
-                                <button type="submit" value="Search" name="search" class="btn btn-primary">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Navbar -->
-
+    }
+    #hide{
+      text-decoration: none;
+    }
+</style>
     <div id='content'>
         <div class="container">
             <div class="col-md-12">
@@ -181,7 +68,7 @@ session_start();
                             <div class='col-md-4 col-sm-6 center-responsive'>
                                 <div class='product'>
                                     <a href='details.php?pro_id=$pro_id'>
-                                      <img src='admin_area/product_images_downloads/$pro_img1' class='img-responsive' id='images'/>
+                                      <img src='admin_area/product_images_downloads/$pro_img1' class='img-responsive' id='images' name='images'/>
                                     </a>
                                 </div>
                                 <div class='text'>

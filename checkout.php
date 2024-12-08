@@ -81,7 +81,7 @@
                 <!-- Padding Nav Start -->
                 <div class="padding-nav">
                    <ul class="nav navbar-nav navbar-left">
-                      <li class="active">
+                      <li>
                         <a href="index.php" >Home</a>
                       </li>
                       <li >

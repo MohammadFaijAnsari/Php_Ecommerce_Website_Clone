@@ -105,7 +105,7 @@ session_start();
                       <li >
                         <a href="services.php" >Services</a>
                       </li>
-                      <li class="active">
+                      <li>
                         <a href="contactus.php" >ContactUs</a>
                       </li>
 

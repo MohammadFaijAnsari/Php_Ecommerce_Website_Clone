@@ -32,13 +32,15 @@
 <?php
  if(isset($_POST['change_pass'])){
     $email=$_SESSION['c_email'];
-    // echo $email;
     $new_password=$_POST['new_password'];
-    // echo $new_password;
     $c_new_password=$_POST['c_new_password'];
     
-    $update_password="UPDATE registration SET c_pass='$new_password',confirm_pass='$c_new_password' WHERE c_email='$email' ";
-    $run_password=mysqli_query($con,$update_password);
+    if($new_password==$c_new_password){
+       $update_password="UPDATE registration SET c_pass='$new_password',c_pass='$c_new_password' WHERE  c_email='$email' ";
+       $run_password=mysqli_query($con,$update_password);
+    }else{
+       echo "<script>alert('Password And Confirm Password Are Not Same')</script>";
+    }
     if($run_password){
       echo "<script>alert('Password Has Been Updated')</script>";
       echo "<script>alert('window.open('my_account.php','_self')')</script>";

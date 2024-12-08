@@ -1,8 +1,8 @@
 <?php
- include("include/db.php");
- include("functions/function.php");
  session_start();
  error_reporting(false);
+ include("include/db.php");
+ include("functions/function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +96,7 @@
                       <li >
                         <a href="customer/my_account.php" >MyAccount</a>
                       </li>
-                      <li class="active">
+                      <li >
                         <a href="card.php" >Shopping cart</a>
                       </li>
                       <li >
@@ -142,8 +142,8 @@
         </div>
     </div>
      <!-- End Navbar -->
-      <div id='content'>
 
+      <div id='content'>
          <div class="container">
             <div class="col-md-12">
                 <ul class="breadcrumb">
@@ -163,7 +163,7 @@
            <!-- Col md-9 start -->
              <div class="col-md-9" id="cart">
                <div class="box" >
-                  <form action="cart.php" method="post" enctype="multipart/form-data">
+                  <form action="card.php" method="post" enctype="multipart/form-data">
                      <h1>Shopping Cart</h1>
                      <?php
                       $ip_address=getUserIp();
@@ -171,7 +171,7 @@
                       $run_cart=mysqli_query($db,$select_cart);
                       $count=mysqli_num_rows($run_cart);
                      ?>
-                     <p class="text-muted">Currently You have <b><?php echo $count;?></b> item in your cart</p>
+                     <p class="text-muted ">Currently You have <b><?php echo $count;?></b> item in your cart</p>
                      <!-- Table Start -->
                       <div class="table-responsive">
                          <table class="table">
@@ -266,8 +266,8 @@
                <!-- Update Function End -->
 
                <!-- Box Start -->
-               <div id='row same-height-row'>
-                   <div class="col-md-3 col-sm-6">
+               <div id='row same-height-row' >
+                   <div class="col-md-3 col-sm-6" id='cart'>
                       <div class="box same-height headline">
                          <h3 class="text-center">You also Like These Products <?php echo $count;?></h3>
                       </div>
@@ -283,7 +283,7 @@
                      
                     ?>
                    <div class="center-responsive col-md-3">
-                       <div class="product same-height">
+                       <div class="">
                          <a href="">
                             <img src="admin_area/product_images/<?php echo $product_img1;?>" class='img-responsive' alt="" srcset="" id='image' name='image'>
                          </a>

@@ -99,7 +99,7 @@
                       <li >
                         <a href="../shop.php">Shop</a>
                       </li>
-                      <li class="active">
+                      <li >
                         <a href="my_account.php?my_order" >MyAccount</a>
                       </li>
                       <li >
