@@ -1,23 +1,9 @@
-
-<style>
-  #header{
-    margin-left: 250px;
-    margin-top: 50px;
-  }
-  #header1{
-    margin-left: 250px;
-  }
-  @media(min-width:768px) {
-    #header1{
-     margin-left: 250px;
-    }
-    #header{
-     margin-left:250px;
-    }
-  }
-  
-  
-</style>
+<?php
+include("include/db.php");
+ if(!isset($_SESSION['admin_email'])){
+   echo "<script>window.open('login.php','_self')</script>";
+ }else{
+?>
 <!-- 1 Row Start -->
 <div class="row" >
   <div class="col-lg-12" >
@@ -45,7 +31,7 @@
                     <i class="fa fa-tasks fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">12</div>
+                    <div class="huge"><?php echo $count;?></div>
                     <div>Product</div>
                 </div>
             </div>
@@ -75,7 +61,7 @@
                     <i class="fa fa-comments fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">12</div>
+                    <div class="huge"><?php echo $count_cus;?></div>
                     <div>Customers</div>
                 </div>
             </div>
@@ -106,7 +92,7 @@
                     <i class="fa fa-shopping-cart fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">12</div>
+                    <div class="huge"><?php echo $count_pro_cat;?></div>
                     <div>Product Categories</div>
                 </div>
             </div>
@@ -137,7 +123,7 @@
                     <i class="fa fa-life-ring fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">12</div>
+                    <div class="huge"><?php echo $count_order;?></div>
                     <div>Orders</div>
                 </div>
             </div>
@@ -156,4 +142,20 @@
   <!-- col-lg-3 end -->
 <!-- 4 Box Start -->
   </div>
-
+</div>
+<!-- 2 Row End -->
+ 
+<!-- 3 Row Start -->
+  <div class="row">
+     <div class="col-lg-8">
+        <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+               <i class="fa fa-money fa-fw"></i>New Orders
+             </h3>
+           </div>
+        </div>
+     </div>
+  </div>
+<!-- 3 Row End -->
+<?php } ?>

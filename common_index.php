@@ -36,7 +36,7 @@ session_start();
                  if(!isset($_SESSION['c_email'])){
                    echo "Welcome Guest";
                  }else{
-                  echo "Welcome : ".$_SESSION['c_email'];
+                    echo "Welcome : ".$_SESSION['c_email'];
                  }
                 ?>
                 </a>
@@ -116,23 +116,23 @@ session_start();
 
                 <div class="navbar-collapse collapse right">
                     <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
-                        <span class="sr-only">Toggle Search</span>
-                        <i class="fa fa-search"></i>
+                           <span class="sr-only">Toggle Search</span>
+                           <i class="fa fa-search"></i>
                     </button>
                 </div>
 
                 <div class="collapse clearfix" id="search">
-                    <form class="navbar-form" method="get" action="result.php">
+                    <!-- Form Start -->
+                    <form class="navbar-form" method="get" action="search.php">
                         <div class="input-group">
                             <input type="text" name="user_query" id="user_query" placeholder="Search" class="form-control" required>
                             <span class="input-group-btn">
-                                <button type="submit" value="Search" name="search" class="btn btn-primary">
+                                <button type="submit" value="Search" name="search" id='search' class="btn btn-primary">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>

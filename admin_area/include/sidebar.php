@@ -1,4 +1,12 @@
+<?php
+include("include/db.php");
+ if(!isset($_SESSION['admin_email'])){
+   echo "<script>window.open('../login.php','_self')</script>";
 
+ }else{
+
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,33 +36,36 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.php?Admin Panel" class="navbar-brand"  style="color: white;">Admin Panel</a>
+      <a href="index.php?Admin Panel" class="navbar-brand"  style="color: gary;">Admin Panel</a>
     </div>
     <!-- nav bar start -->
     <ul class="nav navbar-right top-nav">
       <li class="dropdown">
         <a href="#" data-toggle="collapse" data-target="#dropdown">
-          <i class="fa fa-user"></i> Kaif <b class="caret"></b>
+          <i class="fa fa-user">&nbsp;&nbsp;</i><?php echo $admin_name;?><b class="caret"></b>
         </a>
         <ul class="dropdown-menu" id='dropdown'>
           <li>
-            <a href="index.php?User_Profile">
+            <a href="index.php?User_Profile_id=<?php echo $admin_id?>">
               <i class="fa fa-fw fa-user"></i> Profile
             </a>
           </li>
           <li>
             <a href="index.php?View_Product">
-              <i class="fa fa-fw fa-envelope"></i> Product
+              <i class="fa fa-fw fa-envelope"></i> Product &nbsp;
+              <span class="badge"><?php echo $count;?></span>
             </a>
           </li>
           <li>
             <a href="index.php?View_Customer">
-              <i class="fa fa-fw fa-users"></i> Customer
+              <i class="fa fa-fw fa-users"></i> Customer &nbsp;
+              <span class="badge"><?php echo $count_cus;?></span>
             </a>
           </li>
           <li>
             <a href="index.php?Pro_Cat">
-              <i class="fa fa-fw fa-gear"></i> Product Categories
+              <i class="fa fa-fw fa-gear"></i> Product Categories &nbsp;
+              <span class="badge"><?php echo $count_pro_cat;?></span>
             </a>
           </li>
            <!-- Line Draw Start -->
@@ -73,7 +84,7 @@
     <!--nav bar end-->
     
     <div class='collapse navbar-collapse navbar-ex1-collapse'>
-      <ul class='nav navbar-nav 'id='side-nav'>
+      <ul class='nav sidebar-nav'>
         <!-- Dashboard Text Start-->
         <li>
           <a href="index.php?Dashboard">
@@ -88,7 +99,7 @@
             </a>
            <ul  id="product" class="collapse">
               <li>
-                <a href="index.php?Insert Product">Insert Product</a>
+                <a href="index.php?Insert Product" id="hide">Insert Product</a>
               </li>
               <li>
                 <a href="index.php?View Product">View Product</a>
@@ -165,17 +176,17 @@
          <!-- User DropDown Start -->
         <li>
             <a href="#" data-toggle="collapse" data-target="#user">
-              <i class="fa fa-fw fa-table"></i>User<i class='fa fa-fw fa-caret-down'></i>
+              <i class="fa fa-fw fa-table"></i>User Profile<i class='fa fa-fw fa-caret-down'></i>
             </a>
            <ul  id="user" class="collapse">
               <li>
-                <a href="index.php?Insert User">Insert User</a>
+                <a href="index.php?Insert User">Insert Profile</a>
               </li>
               <li>
-                <a href="index.php?View User">View User</a>
+                <a href="index.php?View User">View Profile</a>
               </li>
               <li>
-                <a href="index.php?Edit Profile">Edit User</a>
+                <a href="index.php?Edit Profile id=<?php echo $admin_id;?>">Edit Profile</a>
               </li>
            </ul>
           </li>
@@ -183,4 +194,4 @@
       </ul>
     </div> 
   </nav>
-
+<?php } ?>
