@@ -24,9 +24,10 @@
    $get_product="SELECT * FROM product WHERE product_id='$product_id' ";
    $run_product=mysqli_query($con,$get_product);
    while($row_product=mysqli_fetch_array($run_product)){
+     $pr_id=$row_product['product_id'];
      $sub_total=$row_product['product_price'] * $qty;
      
-     $insert_customer_order="INSERT INTO customers_order(customer_id,due_amount,invoice_number,qty,size,order_date,order_status) VALUES ('$customer_id','$sub_total','$invoice_no','$qty','$size',NOW(),'$status')";
+     $insert_customer_order="INSERT INTO customers_order(customer_id,product_id,due_amount,invoice_number,qty,size,order_date,order_status) VALUES ('$customer_id','$pr_id','$sub_total','$invoice_no','$qty','$size',NOW(),'$status')";
      $run_c_order=mysqli_query($con,$insert_customer_order);
     //  print_r($run_c_order);
      if($run_c_order){

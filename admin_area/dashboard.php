@@ -146,16 +146,121 @@ include("include/db.php");
 <!-- 2 Row End -->
  
 <!-- 3 Row Start -->
-  <div class="row">
+  <div class="row" style="margin-left:0px;">
+    <!-- New Order Start -->
+     <!-- col-lg-8 start -->
      <div class="col-lg-8">
         <div class="panel panel-primary">
+
            <div class="panel-heading">
              <h3 class="panel-title">
                <i class="fa fa-money fa-fw"></i>New Orders
              </h3>
            </div>
+           <div class="panel-body">
+              <div class="table-responsive">
+                 <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                       <tr>
+                         <th>No</th>
+                         <th>Customers Email</th>
+                         <th>Invoice No</th>
+                         <th>Product Id</th>
+                         <th>Date</th>
+                         <th>Size</th>
+                         <th>Stauts</th>
+                       </tr>
+                    </thead>
+                    <?php
+                     $i=0;
+                     $get_order="SELECT * FROM customers_order ORDER BY order_id DESC LIMIT 0,5";
+                     $run_order=mysqli_query($con,$get_order);
+                     if($run_order){
+                     while($row_order=mysqli_fetch_array($run_order)){
+                      $order_id=$row_order['order_id'];
+                      $customer_id=$row_order['customer_id'];
+                      // echo $customer_id;
+                      $product_id=$row_order['product_id'];
+                      $invoice_number=$row_order['invoice_number'];
+                      $qty=$row_order['qty'];
+                      $size=$row_order['size'];
+                      $order_status=$row_order['order_status'];
+                      $i++;
+                    ?>
+                    <tbody>
+                      <tr>
+                        <td><?php echo $i;?></td>
+                        <td>
+                            <?php 
+                             $get_cus="SELECT * FROM registration WHERE c_id='$customer_id' ";
+                             $run_cus=mysqli_query($con,$get_cus);
+                             $data=mysqli_fetch_array($run_cus);
+                             if($data){
+                                $email=$data['c_email'];
+                                echo $email;
+                             }
+                            ?>
+                        </td>
+                        <td>
+                          <?php echo $invoice_number;?>
+                        </td>
+                        <td>
+                          <?php echo $product_id;?>
+                        </td>
+                        <td>
+                          <?php echo $qty;?>
+                        </td>
+                        <td>
+                          <?php echo $size;?>
+                        </td>
+                        <td>
+                          <?php echo $order_status;?>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <?php  } } ?>
+                 </table>
+              </div>
+               <!-- New Order End -->
+              <!-- View Order Start -->
+               <div class="text-right">
+                  <a href="index.php?View_Order">
+                    View All Order <i class="fa fa-arrow-circle-right" ></i>
+                  </a>
+               </div>
+              <!-- View Order End -->
+           </div>
         </div>
+        <!-- col-lg-end -->
+        
      </div>
-  </div>
 <!-- 3 Row End -->
+ <!-- col-lg-4 start -->
+  
+ <div class="col-md-4">
+            <div class="panel">
+              <div class="panel-body">
+                <div class="thumb-info mb-md">
+                    <img src="admin_image/<?php echo $admin_image?>" alt="Image Not Found" class="rounded img-responsive" srcset="">
+                      <div class="thumb-info-title">
+                         <span class="thumb-info-inner">Admin Name:<?php echo $admin_name;?></span><br>
+                         <span class="thumb-info-type">Admin Jobs:<?php echo $admin_job;?></span>
+                  </div>
+                </div>
+
+                <div class="mb-md">
+                   <div class="weight-content-expends">
+                      <i class="fa fa-user"></i><span> Emails: </span><?php echo $admin_email;?>  <br>
+                      <i class="fa fa-user"></i><span> Country: </span><?php echo $admin_country;?> <br>
+                      <i class="fa fa-user"></i><span> Contact: </span><?php echo $admin_contact;?>
+                   </div>
+                   <hr class="dotted short">
+                   <h5>About</h5><?php echo $admin_about;?>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- col-lg-4 end -->
+  </div>
 <?php } ?>

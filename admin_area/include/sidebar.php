@@ -36,7 +36,7 @@ include("include/db.php");
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.php?Admin Panel" class="navbar-brand"  style="color: gary;">Admin Panel</a>
+      <a href="index.php?Admin Panel" class="navbar-brand"  style="background-color:#555555;">Admin Panel</a>
     </div>
     <!-- nav bar start -->
     <ul class="nav navbar-right top-nav">
@@ -99,10 +99,10 @@ include("include/db.php");
             </a>
            <ul  id="product" class="collapse">
               <li>
-                <a href="index.php?Insert Product" id="hide">Insert Product</a>
+                <a href="index.php?Insert_Product" id="hide">Insert Product</a>
               </li>
               <li>
-                <a href="index.php?View Product">View Product</a>
+                <a href="index.php?View_Product">View Product</a>
               </li>
            </ul>
           </li>

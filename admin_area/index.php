@@ -16,7 +16,13 @@
    $row_admin=mysqli_fetch_array($run_admin);
    $admin_id=$row_admin['admin_id'];
    $admin_name=$row_admin['admin_name'];
-  //  echo $admin_id;
+   $admin_email=$row_admin['admin_email'];
+   $admin_image=$row_admin['admin_image'];
+   $admin_country=$row_admin['admin_country'];
+   $admin_contact=$row_admin['admin_contact'];
+   $admin_job=$row_admin['admin_job'];
+   $admin_about=$row_admin['admin_about'];
+   
  }
 
 // Select Product
@@ -85,6 +91,15 @@ if ($run_order) {
          <?php
           if(isset($_GET['Dashboard'])){
             include("dashboard.php");
+          }
+          if(isset($_GET['Insert_Product'])){
+            include("insert_product.php");
+          }
+          if(isset($_GET['View_Product'])){
+            include("view_product.php");
+          }
+          if(isset($_GET['Delete_Product'])){
+            include("delete_product.php");
           }
           ?>
        </div>

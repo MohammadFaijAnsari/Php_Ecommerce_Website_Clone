@@ -1,5 +1,8 @@
 <?php
-include("../include/db.php");
+include("include/db.php");
+ if(!isset($_SESSION['admin_email'])){
+   echo "<script>window.open('login.php','_self')</script>";
+ }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +49,7 @@ include("../include/db.php");
       <div class="panel panel-default">
         <!-- Panel Heading Start -->
         <div class="panel heading">
-          <h3 class="panel-title" align='center id=' size'>
+          <h3 class="panel-title" align='center' id='size'>
             <i class="fa fa-money"></i>INSERT PRODUCT
           </h3>
         </div>
@@ -136,6 +139,7 @@ include("../include/db.php");
 
 </html>
 <?php
+error_reporting(false);
 if (isset($_POST['submit'])) {
   $product_title = $_POST['product_title'];
   $product_cat_id = $_POST['product_cat'];
@@ -165,3 +169,4 @@ if (isset($_POST['submit'])) {
   }
 }
 ?>
+<?php }?>

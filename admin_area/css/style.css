@@ -20,24 +20,27 @@ body {
 .sidebar-nav {
     list-style: none;
     padding: 0;
-    margin: 0;
-    background-color: #222;
+    margin-top: -1px;
+    background-color: #555555;
     color: white;
     position: fixed;
     top: 51px;
     left: 0;
     bottom: 0;
     overflow-y: auto;
-    width: 100%; /* Default for small screens */
+    width: 100%;
 }
 
 .sidebar-nav li {
+    margin-top: 100px;
     border-bottom: 1px solid #444;
 }
 
 .sidebar-nav a {
     display: block;
-    color: #bfb0b0;
+    color: white;
+    /* Test */
+    background-color: #555555;
     padding: 12px 20px;
     text-decoration: none;
     font-size: 16px;

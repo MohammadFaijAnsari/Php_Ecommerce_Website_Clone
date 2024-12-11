@@ -215,7 +215,7 @@
                         $payment_method=$_POST['payment'];
                         $trans_nu=$_POST['tr_no'];
                         $date=$_POST['date'];
-                        $complete="Complete Payment";
+                        $complete="Complete";
 
                         $insert="INSERT INTO payment(invoice_id,amount,payment_mode,trans_number,payment_date) VALUES('$invoice_number','$amount','$payment_method','$trans_nu','$date')";
                         $run=mysqli_query($db,$insert);
