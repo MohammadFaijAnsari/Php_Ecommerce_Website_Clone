@@ -2,10 +2,7 @@
 include("include/db.php");
  if(!isset($_SESSION['admin_email'])){
    echo "<script>window.open('login.php','_self')</script>";
-
  }else{
-
- 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,11 +72,11 @@ include("include/db.php");
                                     <td><?php echo $pro_date;?></td>
                                     <td>
                                         <a href="index.php?Edit_Product=<?php echo $pro_id;?>" align='center'>
-                                            <i class="fa fa-pencil fa-lg"></i></a>
+                                            <i class="fa fa-pencil fa-2x"></i></a>
                                     </td>
                                     <td>
                                         <a href="index.php?Delete_Product=<?php echo $pro_id;?>" align='center'> 
-                                            <i class="fa fa-trash-o fa-lg"></i>
+                                            <i class="fa fa-trash-o fa-2x"></i>
                                         </a>
                                     </td>
                                 </tr>

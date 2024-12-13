@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2024 at 03:40 PM
+-- Generation Time: Dec 13, 2024 at 07:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `php_ecommerce_website`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_login`
+--
+
+CREATE TABLE `admin_login` (
+  `admin_id` int(100) NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_pass` varchar(255) NOT NULL,
+  `admin_image` text NOT NULL,
+  `admin_contact` varchar(100) NOT NULL,
+  `admin_country` text NOT NULL,
+  `admin_job` varchar(255) NOT NULL,
+  `admin_about` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_login`
+--
+
+INSERT INTO `admin_login` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`, `admin_image`, `admin_contact`, `admin_country`, `admin_job`, `admin_about`) VALUES
+(2, 'Kaif', 'kaif@gmail.com', '1234', 'test.jpg', '8090835664', 'India', 'Student', 'I am so happy');
 
 -- --------------------------------------------------------
 
@@ -65,6 +90,7 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_desc`) VALUES
 CREATE TABLE `customers_order` (
   `order_id` int(10) NOT NULL,
   `customer_id` int(10) NOT NULL,
+  `product_id` int(100) NOT NULL,
   `due_amount` int(100) NOT NULL,
   `invoice_number` int(100) NOT NULL,
   `qty` int(10) NOT NULL,
@@ -77,8 +103,9 @@ CREATE TABLE `customers_order` (
 -- Dumping data for table `customers_order`
 --
 
-INSERT INTO `customers_order` (`order_id`, `customer_id`, `due_amount`, `invoice_number`, `qty`, `size`, `order_date`, `order_status`) VALUES
-(17, 70, 899, 2070302015, 1, '0', '2024-12-04 07:14:26', 'Complete Payment');
+INSERT INTO `customers_order` (`order_id`, `customer_id`, `product_id`, `due_amount`, `invoice_number`, `qty`, `size`, `order_date`, `order_status`) VALUES
+(21, 82, 0, 400, 971929113, 2, 'Small', '2024-12-10 15:24:26', 'Complete'),
+(22, 82, 17, 899, 341167777, 1, 'Small', '2024-12-10 15:24:40', 'Complete');
 
 -- --------------------------------------------------------
 
@@ -100,7 +127,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `invoice_id`, `amount`, `payment_mode`, `trans_number`, `payment_date`) VALUES
-(14, 2070302015, 899, 'Paypal', 763572, '2002-12-12');
+(18, 971929113, 400, 'Payt', 12345, '1111-12-12'),
+(19, 971929113, 899, 'Paypal', 1234, '1212-12-12');
 
 -- --------------------------------------------------------
 
@@ -127,13 +155,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `p_cat_Id`, `cat_id`, `date`, `product_title`, `product_img1`, `product_img2`, `product_img3`, `product_price`, `product_desc`, `product_keyword`) VALUES
-(15, 5, 1, '2024-11-11 14:10:56', 'T-Shirt', 't-shirt1.jpeg', 't-shirt2.jpeg', 't-shirt3.jpeg', 200, 'Best Product In This Website', 'Best Product'),
-(16, 2, 4, '2024-11-11 13:41:05', 'Samsung S22 Ultra', 'phone1.jpeg', 'phone2.jpeg', 'phone3.jpeg', 23999, 'Best Product In This Website', 'Best Product'),
-(17, 3, 1, '2024-11-11 13:42:01', 'Shoes', 'shoes1.png', 'shoes2.jpeg', 'shoes3.jpeg', 899, 'Best Product In This Website', 'Best Product'),
-(18, 1, 1, '2024-11-19 06:17:27', 'Jacket', 'jacket1.jpeg', 'jacket2.jpeg', 'jacket3.jpeg', 1299, 'Best Product In This Website', 'Best Product'),
-(20, 7, 2, '2024-11-19 06:31:14', 'Kurti', 'kurti1.jpeg', 'kurti2.jpeg', 'kurti3.jpeg', 299, 'Best Product In This Website', 'Best Product'),
-(21, 7, 3, '2024-11-19 06:31:57', 'Kids Wear', 'kids1.jpeg', 'kids2.jpeg', 'kids3.jpeg', 499, 'Best Product In This Website', 'Best Product'),
-(22, 2, 4, '2024-11-23 05:15:22', 'Laptop', 'laptop1.jpeg', 'laptop2.jpeg', 'laptop3.jpeg', 49999, 'Best Product', 'Best Product');
+(25, 0, 1, '0000-00-00 00:00:00', 'T-Shirt For Men', 't-shirt1.jpeg', 't-shirt2.jpeg', 't-shirt3.jpeg', 299, 'Best Product                            ', 'Best'),
+(26, 2, 1, '2024-12-13 14:04:59', 'Watch', 'watch1.jpeg', 'watch2.jpeg', 'watch3.jpeg', 1499, 'Best Product', 'Best');
 
 -- --------------------------------------------------------
 
@@ -169,14 +192,17 @@ CREATE TABLE `registration` (
   `c_name` varchar(255) NOT NULL,
   `c_email` varchar(255) NOT NULL,
   `c_pass` varchar(255) NOT NULL,
-  `confirm_pass` varchar(100) NOT NULL,
-  `c_country` text NOT NULL,
-  `c_city` text NOT NULL,
-  `c_number` varchar(255) NOT NULL,
-  `c_address` varchar(255) NOT NULL,
   `c_image` text NOT NULL,
   `c_ip` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`c_id`, `c_name`, `c_email`, `c_pass`, `c_image`, `c_ip`) VALUES
+(82, 'Mukesh Sharma', 'mukeash@gmail.com', '1234', 'bootstrap-framework-logo.png', '::1'),
+(83, 'Mukesh Sharma', 'mukeash@gmail.com', '1234asdf', 'Daco_2081416.png', '::1');
 
 -- --------------------------------------------------------
 
@@ -202,6 +228,12 @@ INSERT INTO `slider` (`id`, `slider_name`, `slider_image`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin_login`
+--
+ALTER TABLE `admin_login`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `categories`
@@ -250,6 +282,12 @@ ALTER TABLE `slider`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_login`
+--
+ALTER TABLE `admin_login`
+  MODIFY `admin_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -259,19 +297,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers_order`
 --
 ALTER TABLE `customers_order`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -283,7 +321,7 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `slider`

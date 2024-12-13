@@ -101,6 +101,9 @@ if ($run_order) {
           if(isset($_GET['Delete_Product'])){
             include("delete_product.php");
           }
+          if(isset($_GET['Edit_Product'])){
+            include("edit_product.php");
+          }
           ?>
        </div>
      </div>
