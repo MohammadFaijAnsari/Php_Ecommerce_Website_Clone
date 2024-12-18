@@ -104,6 +104,19 @@ if ($run_order) {
           if(isset($_GET['Edit_Product'])){
             include("edit_product.php");
           }
+          if(isset($_GET['Insert_Product_Categories'])){
+            include("insert_product_categories.php");
+          }
+          if(isset($_GET['View_Product_Categories'])){
+            include("view_product_categories.php");
+          }
+          if(isset($_GET['Delete_Product_Categories'])){
+            include("delete_product_categories.php");
+          }
+          if(isset($_GET['Edit_Product_Categories'])){
+            include("edit_product_categories.php");
+          }
+          
           ?>
        </div>
      </div>
